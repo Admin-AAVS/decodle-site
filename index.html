@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEcoDLE — Coming Soon</title>
+<meta name="description" content="A new kind of puzzle game. Coming soon to iOS and Android.">
+<meta property="og:title" content="DEcoDLE — Coming Soon">
+<meta property="og:description" content="A new kind of puzzle game. Coming soon to iOS and Android.">
+<meta property="og:image" content="og-image.png">
+<meta name="theme-color" content="#0D0B07">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --phosphor:     #00FF41;
+  --phosphor-dim: #003300;
+  --phosphor-glow: rgba(0,255,65,0.4);
+  --tile-warm:    #F5ECD7;
+  --tile-gold:    #C4AA78;
+  --ink:          #0D0B07;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  background: var(--ink);
+  color: var(--tile-warm);
+  font-family: 'Share Tech Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════
+   MUSIC TOGGLE
+═══════════════════════════════ */
+.music-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 999;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0,255,65,0.35);
+  background: rgba(13,11,7,0.85);
+  backdrop-filter: blur(8px);
+  color: var(--phosphor);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  box-shadow: 0 0 12px rgba(0,255,65,0.15);
+}
+.music-btn:hover {
+  border-color: var(--phosphor);
+  background: rgba(0,255,65,0.1);
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(0,255,65,0.35);
+}
+.music-btn.muted {
+  border-color: rgba(196,170,120,0.25);
+  color: rgba(245,236,215,0.3);
+  box-shadow: none;
+}
+.music-btn .music-label {
+  position: absolute;
+  right: 52px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(245,236,215,0.35);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.music-btn:hover .music-label { opacity: 1; }
+
+/* ═══════════════════════════════
+   HERO
+═══════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('decodle-bg-desk.png');
+  background-size: cover;
+  background-position: center 20%;
+  filter: brightness(0.45) saturate(0.75);
+  animation: slow-drift 18s ease-in-out infinite alternate;
+}
+@keyframes slow-drift {
+  from { transform: scale(1.05) translateY(0); }
+  to   { transform: scale(1.05) translateY(-14px); }
+}
+
+.hero-scan {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(0,0,0,0.07) 3px, rgba(0,0,0,0.07) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, var(--ink));
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════
+   LOGO BLOCK
+═══════════════════════════════ */
+.logo-block {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 1.5rem;
+  animation: rise-in 1s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay: 0.15s;
+}
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+.wl {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  paint-order: stroke fill;
+  display: inline-block;
+}
+.wl-big { font-size: clamp(4.5rem, 18vw, 8rem); -webkit-text-stroke: 5px #000; }
+.wl-sm  { font-size: clamp(3rem, 12vw, 5.3rem); -webkit-text-stroke: 4px #000; position: relative; top: 0.15em; }
+
+.c-green      { color: #2ECC10; }
+.c-limegreen  { color: #A8E000; }
+.c-orange     { color: #FF8C00; }
+.c-pink       { color: #FF4FCB; }
+.c-royalblue  { color: #4169E1; }
+.c-teal       { color: #00CED1; }
+
+.mid-d {
+  color: #2ECC10;
+  animation: mid-d-flicker 4.5s ease-in-out infinite;
+  cursor: pointer;
+  user-select: none;
+}
+@keyframes mid-d-flicker {
+  0%, 88%  { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+  89%      { color: #39FF14; -webkit-text-stroke: 5px #003300; text-shadow: 0 0 12px #39FF14, 0 0 30px rgba(57,255,20,0.8); }
+  89.5%    { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+  90.5%    { color: #00FF41; -webkit-text-stroke: 5px #001a00; text-shadow: 0 0 20px #00FF41, 0 0 50px rgba(0,255,65,0.6); }
+  91.5%    { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+  100%     { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+}
+
+/* matrix easter egg */
+.matrix-active .wl {
+  color: #00FF41 !important;
+  -webkit-text-stroke: 9px #001a00 !important;
+  animation: matrix-pulse 2s ease-in-out infinite !important;
+  text-shadow: none;
+}
+.matrix-active .wl-sm { -webkit-text-stroke: 7px #001a00 !important; }
+@keyframes matrix-pulse {
+  0%, 100% { color: #00FF41; text-shadow: 0 0 8px #00FF41, 0 0 24px rgba(0,255,65,0.7), 0 0 60px rgba(0,255,65,0.3); }
+  50%       { color: #39FF85; text-shadow: 0 0 4px #39FF85, 0 0 14px rgba(57,255,133,0.5), 0 0 35px rgba(57,255,133,0.2); }
+}
+.matrix-active .bar-track {
+  background: #00FF41 !important;
+  box-shadow: 0 0 20px rgba(0,255,65,0.8), 0 0 50px rgba(0,255,65,0.4) !important;
+  animation: bar-glow-pulse 2s ease-in-out infinite;
+}
+@keyframes bar-glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,255,65,0.8), 0 0 50px rgba(0,255,65,0.4); }
+  50%       { box-shadow: 0 0 10px rgba(0,255,65,0.4), 0 0 25px rgba(0,255,65,0.2); }
+}
+.matrix-active .gear { color: #00FF41 !important; text-shadow: 0 0 10px rgba(0,255,65,0.9); animation: gear-spin 2s linear infinite !important; }
+.matrix-active .init-text { color: #00FF41; text-shadow: 0 0 14px rgba(0,255,65,1), 0 0 40px rgba(0,255,65,0.5); }
+.matrix-active .subtitle { text-shadow: 0 0 14px rgba(0,255,65,0.9), 0 0 40px rgba(0,255,65,0.4); }
+.hero.matrix-hero .hero-bg { filter: brightness(0.4) saturate(0.4) hue-rotate(80deg) !important; transition: filter 0.6s ease; }
+.wordmark, .bar-track, .gear, .init-text, .subtitle { transition: color 0.4s, text-shadow 0.4s, background 0.5s, box-shadow 0.5s; }
+
+.subtitle {
+  font-size: clamp(0.7rem, 2.5vw, 0.95rem);
+  color: var(--phosphor);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 10px var(--phosphor-glow);
+}
+
+.bar-wrap {
+  width: min(500px, 88vw);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bar-track {
+  flex: 1;
+  height: 20px;
+  border-radius: 10px;
+  background: linear-gradient(to right,
+    #2ECC10 0%, #A8E000 18%, #FFB800 35%,
+    #FF5E00 50%, #FF3CA0 65%, #7B5FFF 80%, #00D8FF 100%
+  );
+  box-shadow: 0 0 16px rgba(57,255,133,0.45);
+  position: relative;
+  overflow: hidden;
+}
+.bar-track::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  width: 60%;
+  animation: shimmer 2.2s linear infinite;
+}
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(267%); }
+}
+.gear { font-size: 22px; color: #aaa; animation: gear-spin 4s linear infinite; flex-shrink: 0; }
+@keyframes gear-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.init-text {
+  font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+  letter-spacing: 0.25em;
+  color: var(--phosphor);
+  text-shadow: 0 0 10px var(--phosphor-glow);
+  text-transform: uppercase;
+}
+.dot { animation: blink 1.2s step-end infinite; }
+.dot:nth-child(2) { animation-delay: 0.4s; }
+.dot:nth-child(3) { animation-delay: 0.8s; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ═══════════════════════════════
+   STORE SECTION
+═══════════════════════════════ */
+.store-section {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  padding-bottom: 4rem;
+  animation: rise-in 1s cubic-bezier(0.22,1,0.36,1) both;
+  animation-delay: 0.5s;
+}
+.store-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  color: var(--tile-gold);
+  opacity: 0.7;
+  text-transform: uppercase;
+}
+.store-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+.store-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(196,170,120,0.4);
+  background: rgba(13,11,7,0.75);
+  backdrop-filter: blur(8px);
+  color: var(--tile-warm);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.store-btn:hover { border-color: var(--phosphor); background: rgba(0,255,65,0.08); transform: translateY(-2px); }
+.store-btn .store-icon { font-size: 1.6rem; line-height: 1; }
+.store-btn .store-text { text-align: left; }
+.store-btn .store-text small { display: block; font-size: 0.6rem; opacity: 0.55; letter-spacing: 0.15em; text-transform: uppercase; }
+.store-btn .store-text strong { display: block; font-size: 0.9rem; font-family: 'Nunito', sans-serif; font-weight: 700; letter-spacing: 0.05em; }
+.badge-soon {
+  position: absolute;
+  top: 6px; right: 6px;
+  font-size: 0.5rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--phosphor);
+  background: rgba(0,255,65,0.12);
+  border: 1px solid rgba(0,255,65,0.3);
+  border-radius: 3px;
+  padding: 2px 5px;
+}
+
+/* ═══════════════════════════════
+   FOOTER
+═══════════════════════════════ */
+footer {
+  padding: 2rem 1.5rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  border-top: 1px solid rgba(196,170,120,0.08);
+}
+.footer-logo {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  paint-order: stroke fill;
+}
+.footer-logo span {
+  display: inline-block;
+  -webkit-text-stroke: 2px #000;
+}
+.fl-big  { font-size: 1.4rem; -webkit-text-stroke: 2px #000; }
+.fl-sm   { font-size: 0.95rem; -webkit-text-stroke: 1.5px #000; position: relative; top: 0.12em; }
+.fl-d1   { color: #2ECC10; }
+.fl-e1   { color: #A8E000; }
+.fl-c    { color: #FF8C00; }
+.fl-o    { color: #FF4FCB; }
+.fl-d2   { color: #2ECC10; cursor: pointer; user-select: none; animation: mid-d-flicker 4.5s ease-in-out infinite; }
+.fl-l    { color: #4169E1; }
+.fl-e2   { color: #00CED1; }
+
+.footer-logo.matrix-active span {
+  color: #00FF41 !important;
+  -webkit-text-stroke: 3px #001a00 !important;
+  animation: matrix-pulse 2s ease-in-out infinite !important;
+}
+
+footer nav { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+footer nav a {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,236,215,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer nav a:hover { color: var(--tile-gold); }
+.copy {
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: rgba(245,236,215,0.2);
+}
+</style>
+</head>
+<body>
+
+<!-- AUDIO (keep filenames matching your originals) -->
+<audio id="track-menu"    src="menu_music.mp3"    preload="none" loop></audio>
+
+<!-- MUSIC BUTTON -->
+<button class="music-btn muted" id="music-btn" aria-label="Toggle music">
+  <span id="music-icon">♩</span>
+  <span class="music-label" id="music-label">music off</span>
+</button>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-scan"></div>
+
+  <div class="logo-block" id="logo-block">
+
+    <!-- WORDMARK -->
+    <div class="wordmark" id="hero-wordmark">
+      <span class="wl wl-big c-green">D</span>
+      <span class="wl wl-big c-limegreen">E</span>
+      <span class="wl wl-sm  c-orange">c</span>
+      <span class="wl wl-sm  c-pink">o</span>
+      <span class="wl wl-big mid-d" id="mid-d">D</span>
+      <span class="wl wl-big c-royalblue">L</span>
+      <span class="wl wl-big c-teal">E</span>
+    </div>
+
+    <!-- SUBTITLE -->
+    <div class="subtitle">A puzzle game</div>
+
+    <!-- RAINBOW BAR -->
+    <div class="bar-wrap">
+      <span class="gear">⚙</span>
+      <div class="bar-track"></div>
+      <span class="gear" style="animation-direction:reverse">⚙</span>
+    </div>
+
+    <!-- INIT TEXT -->
+    <div class="init-text" id="init-text">
+      COMING SOON<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+    </div>
+
+  </div><!-- /logo-block -->
+
+  <!-- STORE BUTTONS -->
+  <div class="store-section">
+    <div class="store-label">Available on</div>
+    <div class="store-buttons">
+      <a href="#" class="store-btn" title="App Store — Coming Soon">
+        <span class="store-icon">🍎</span>
+        <span class="store-text">
+          <small>Download on the</small>
+          <strong>App Store</strong>
+        </span>
+        <span class="badge-soon">Soon</span>
+      </a>
+      <a href="#" class="store-btn" title="Google Play — Coming Soon">
+        <span class="store-icon">▶</span>
+        <span class="store-text">
+          <small>Get it on</small>
+          <strong>Google Play</strong>
+        </span>
+        <span class="badge-soon">Soon</span>
+      </a>
+    </div>
+  </div>
+
+</section><!-- /hero -->
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-logo" id="footer-wordmark">
+    <span class="fl-d1 fl-big">D</span><span class="fl-e1 fl-big">E</span><span class="fl-c fl-sm">c</span><span class="fl-o fl-sm">o</span><span class="fl-d2 fl-big" id="footer-mid-d">D</span><span class="fl-l fl-big">L</span><span class="fl-e2 fl-big">E</span>
+  </div>
+  <nav>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:decodle.app@adastravanguard.com">Contact</a>
+  </nav>
+  <div class="copy">© 2026 Ad Astra Vanguard Studios. All rights reserved.</div>
+</footer>
+
+<script>
+(function() {
+
+  // ── MUSIC ──────────────────────────────────────────
+  const track   = document.getElementById('track-menu');
+  const btn     = document.getElementById('music-btn');
+  const icon    = document.getElementById('music-icon');
+  const label   = document.getElementById('music-label');
+  let playing   = false;
+  let started   = false;
+
+  track.volume = 0.55;
+
+  function startMusic() {
+    if (!started) {
+      started = true;
+      playing = true;
+      track.loop = true;
+      track.play().catch(() => {});
+      updateBtn();
+    }
+  }
+
+  function updateBtn() {
+    if (playing) {
+      btn.classList.remove('muted');
+      icon.textContent = '♪';
+      label.textContent = 'music on';
+    } else {
+      btn.classList.add('muted');
+      icon.textContent = '♩';
+      label.textContent = 'music off';
+    }
+  }
+
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (!started) {
+      startMusic();
+    } else {
+      playing = !playing;
+      playing ? track.play().catch(() => {}) : track.pause();
+      updateBtn();
+    }
+  });
+
+  function onFirstInteraction() {
+    if (!started) startMusic();
+    document.removeEventListener('click',      onFirstInteraction);
+    document.removeEventListener('touchstart', onFirstInteraction);
+    document.removeEventListener('keydown',    onFirstInteraction);
+    document.removeEventListener('scroll',     onFirstInteraction);
+  }
+  document.addEventListener('click',      onFirstInteraction);
+  document.addEventListener('touchstart', onFirstInteraction, { passive: true });
+  document.addEventListener('keydown',    onFirstInteraction);
+  document.addEventListener('scroll',     onFirstInteraction, { passive: true });
+
+  // ── MATRIX EASTER EGG — HERO ───────────────────────
+  const midD      = document.getElementById('mid-d');
+  const logoBlock = document.getElementById('logo-block');
+  const hero      = document.getElementById('hero');
+  const initText  = document.getElementById('init-text');
+  let matrixTimer = null;
+  let isMatrix    = false;
+
+  midD.addEventListener('click', function() {
+    if (isMatrix) return;
+    isMatrix = true;
+    logoBlock.classList.add('matrix-active');
+    hero.classList.add('matrix-hero');
+    initText.innerHTML = 'DECODING<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
+    midD.style.animation = 'matrix-pulse 2s ease-in-out infinite';
+    matrixTimer = setTimeout(function() {
+      logoBlock.classList.remove('matrix-active');
+      hero.classList.remove('matrix-hero');
+      initText.innerHTML = 'COMING SOON<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
+      midD.style.animation = '';
+      isMatrix = false;
+    }, 4000);
+  });
+
+  // ── MATRIX EASTER EGG — FOOTER ─────────────────────
+  const footerMidD    = document.getElementById('footer-mid-d');
+  const footerLogo    = document.getElementById('footer-wordmark');
+  let footerMatrix    = false;
+  let footerTimer     = null;
+
+  footerMidD.addEventListener('click', function() {
+    if (footerMatrix) return;
+    footerMatrix = true;
+    footerLogo.classList.add('matrix-active');
+    footerTimer = setTimeout(function() {
+      footerLogo.classList.remove('matrix-active');
+      footerMatrix = false;
+    }, 4000);
+  });
+
+})();
+</script>
+</body>
+</html>
