@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kallogic.decodle",
+      "sha256_cert_fingerprints": ["BC:10:D1:C1:9E:A7:F3:7E:47:AB:C6:3E:5A:EE:48:3C:A0:26:FE:55:D8:9A:65:F4:66:C9:2F:E3:4D:08:4B:73"]
+    }
+  }
+]
