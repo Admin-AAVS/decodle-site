@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEcoDLE — Challenge</title>
+<meta name="description" content="Someone challenged you to crack their DEcoDLE cypher. Can you decode it?">
+<meta property="og:title" content="DEcoDLE — You've Been Challenged">
+<meta property="og:description" content="Someone encrypted a 5-symbol sequence just for you. Crack the Cypher. Decode the sequence.">
+<meta property="og:image" content="/og-image.png">
+<meta name="theme-color" content="#0D0B07">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --phosphor: #00FF41;
+  --phosphor-dim: #003300;
+  --phosphor-glow: rgba(0,255,65,0.4);
+  --tile-warm: #F5ECD7;
+  --ink: #0D0B07;
+}
+body {
+  background: var(--ink);
+  color: var(--tile-warm);
+  font-family: 'Share Tech Mono', monospace;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+.logo {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+.logo .d1 { color: #00FF41; }
+.logo .e1 { color: #FFD60A; }
+.logo .c  { color: #FF6B35; text-transform: lowercase; font-size: 0.7em; }
+.logo .o  { color: #E040FB; }
+.logo .d2 { color: #00E5FF; }
+.logo .l  { color: #FF4081; }
+.logo .e2 { color: #76FF03; }
+.challenge-code {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  color: var(--phosphor);
+  margin: 1.5rem 0 0.5rem;
+  text-shadow: 0 0 20px var(--phosphor-glow);
+  letter-spacing: 0.15em;
+}
+.tagline {
+  color: rgba(245,236,215,0.6);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  max-width: 360px;
+  line-height: 1.5;
+}
+.status {
+  color: var(--phosphor);
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+.store-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.store-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 1.5px solid rgba(0,255,65,0.4);
+  border-radius: 10px;
+  color: var(--phosphor);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
+  background: rgba(0,255,65,0.06);
+}
+.store-btn:hover {
+  border-color: var(--phosphor);
+  background: rgba(0,255,65,0.12);
+  box-shadow: 0 0 20px rgba(0,255,65,0.25);
+}
+.footer-note {
+  margin-top: 3rem;
+  font-size: 0.7rem;
+  color: rgba(245,236,215,0.25);
+}
+</style>
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var code = params.get('code');
+
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  var isAndroid = /Android/i.test(navigator.userAgent);
+
+  if (code && (isIOS || isAndroid)) {
+    var deepLink = 'decodle://challenge?code=' + encodeURIComponent(code);
+    var storeURL = isIOS
+      ? 'https://apps.apple.com/app/decodle/id6762175972'
+      : 'https://play.google.com/store/apps/details?id=com.kallogic.decodle';
+
+    window.location.href = deepLink;
+
+    setTimeout(function () {
+      if (!document.hidden) {
+        window.location.href = storeURL;
+      }
+    }, 1500);
+  }
+})();
+</script>
+</head>
+<body>
+
+<div class="logo">
+  <span class="d1">D</span><span class="e1">E</span><span class="c">c</span><span class="o">o</span><span class="d2">D</span><span class="l">L</span><span class="e2">E</span>
+</div>
+
+<div class="challenge-code" id="code-display">:/System> CHALLENGE INCOMING</div>
+
+<p class="tagline">Someone encrypted a 5-symbol sequence just for you. Download DEcoDLE, enter the code, and try to crack it.</p>
+
+<p class="status" id="status">Attempting to open DEcoDLE...</p>
+
+<div class="store-btns">
+  <a class="store-btn" href="https://apps.apple.com/app/decodle/id6762175972">App Store</a>
+  <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.kallogic.decodle">Google Play</a>
+</div>
+
+<p class="footer-note">decodle.app &mdash; Ad Astra Vanguard Studios LLC</p>
+
+<script>
+(function () {
+  var params = new URLSearchParams(window.location.search);
+  var code = params.get('code');
+  var codeEl = document.getElementById('code-display');
+  var statusEl = document.getElementById('status');
+
+  if (code) {
+    var display = code.toUpperCase();
+    if (display.length >= 5 && display.indexOf('-') === -1) {
+      display = display.slice(0, 2) + '-' + display.slice(2);
+    }
+    codeEl.textContent = '> CODE: ' + display;
+    statusEl.textContent = 'If the app didn\'t open, download it and enter the code above.';
+  } else {
+    codeEl.textContent = ':/System> NO CODE DETECTED';
+    statusEl.textContent = 'This link is missing a challenge code.';
+  }
+})();
+</script>
+
+</body>
+</html>

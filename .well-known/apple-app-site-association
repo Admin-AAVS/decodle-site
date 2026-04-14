@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["94BWE5MZFU.com.kal.logic.decodlern"],
+        "components": [
+          {
+            "/": "/challenge*"
+          }
+        ]
+      }
+    ]
+  }
+}
