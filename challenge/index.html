@@ -101,21 +101,17 @@ body {
 (function () {
   var params = new URLSearchParams(window.location.search);
   var code = params.get('code');
-
-  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
   var isAndroid = /Android/i.test(navigator.userAgent);
 
-  if (code && (isIOS || isAndroid)) {
+  // iOS: Universal Links handle the handoff natively — no JS redirect needed.
+  // Android: try custom scheme, fall back to Play Store.
+  if (code && isAndroid) {
     var deepLink = 'decodle://challenge?code=' + encodeURIComponent(code);
-    var storeURL = isIOS
-      ? 'https://apps.apple.com/app/decodle/id6762175972'
-      : 'https://play.google.com/store/apps/details?id=com.kallogic.decodle';
-
     window.location.href = deepLink;
 
     setTimeout(function () {
       if (!document.hidden) {
-        window.location.href = storeURL;
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.kallogic.decodle';
       }
     }, 1500);
   }
