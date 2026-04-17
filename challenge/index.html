@@ -39,12 +39,11 @@ body {
   font-weight: 900;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
-  -webkit-text-stroke: 5px #000;
 }
 .logo .d1 { color: #2ECC10; }
 .logo .e1 { color: #A8E000; }
-.logo .c  { color: #FF8C00; text-transform: lowercase; font-size: 0.7em; -webkit-text-stroke: 4px #000; position: relative; top: 0.15em; }
-.logo .o  { color: #FF4FCB; font-size: 0.7em; -webkit-text-stroke: 4px #000; position: relative; top: 0.15em; }
+.logo .c  { color: #FF8C00; text-transform: lowercase; font-size: 0.7em; position: relative; top: 0.15em; }
+.logo .o  { color: #FF4FCB; font-size: 0.7em; position: relative; top: 0.15em; }
 .logo .mid-d {
   color: #2ECC10;
   cursor: pointer;
@@ -54,21 +53,18 @@ body {
 .logo .l  { color: #4169E1; }
 .logo .e2 { color: #00CED1; }
 @keyframes mid-d-flicker {
-  0%, 88%  { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
-  89%      { color: #39FF14; -webkit-text-stroke: 5px #003300; text-shadow: 0 0 12px #39FF14, 0 0 30px rgba(57,255,20,0.8); }
-  89.5%    { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
-  90.5%    { color: #00FF41; -webkit-text-stroke: 5px #001a00; text-shadow: 0 0 20px #00FF41, 0 0 50px rgba(0,255,65,0.6); }
-  91.5%    { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
-  100%     { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+  0%, 88%  { color: #2ECC10; text-shadow: none; }
+  89%      { color: #39FF14; text-shadow: 0 0 12px #39FF14, 0 0 30px rgba(57,255,20,0.8); }
+  89.5%    { color: #2ECC10; text-shadow: none; }
+  90.5%    { color: #00FF41; text-shadow: 0 0 20px #00FF41, 0 0 50px rgba(0,255,65,0.6); }
+  91.5%    { color: #2ECC10; text-shadow: none; }
+  100%     { color: #2ECC10; text-shadow: none; }
 }
 .logo.matrix-active span {
   color: #00FF41 !important;
-  -webkit-text-stroke: 9px #001a00 !important;
   animation: matrix-pulse 2s ease-in-out infinite !important;
   text-shadow: none;
 }
-.logo.matrix-active .c,
-.logo.matrix-active .o { -webkit-text-stroke: 7px #001a00 !important; }
 @keyframes matrix-pulse {
   0%, 100% { color: #00FF41; text-shadow: 0 0 8px #00FF41, 0 0 24px rgba(0,255,65,0.7), 0 0 60px rgba(0,255,65,0.3); }
   50%       { color: #39FF85; text-shadow: 0 0 4px #39FF85, 0 0 14px rgba(57,255,133,0.5), 0 0 35px rgba(57,255,133,0.2); }
