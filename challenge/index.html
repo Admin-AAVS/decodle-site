@@ -39,14 +39,40 @@ body {
   font-weight: 900;
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
+  -webkit-text-stroke: 5px #000;
 }
-.logo .d1 { color: #00FF41; }
-.logo .e1 { color: #FFD60A; }
-.logo .c  { color: #FF6B35; text-transform: lowercase; font-size: 0.7em; }
-.logo .o  { color: #E040FB; }
-.logo .d2 { color: #00E5FF; }
-.logo .l  { color: #FF4081; }
-.logo .e2 { color: #76FF03; }
+.logo .d1 { color: #2ECC10; }
+.logo .e1 { color: #A8E000; }
+.logo .c  { color: #FF8C00; text-transform: lowercase; font-size: 0.7em; -webkit-text-stroke: 4px #000; position: relative; top: 0.15em; }
+.logo .o  { color: #FF4FCB; font-size: 0.7em; -webkit-text-stroke: 4px #000; position: relative; top: 0.15em; }
+.logo .mid-d {
+  color: #2ECC10;
+  cursor: pointer;
+  user-select: none;
+  animation: mid-d-flicker 4.5s ease-in-out infinite;
+}
+.logo .l  { color: #4169E1; }
+.logo .e2 { color: #00CED1; }
+@keyframes mid-d-flicker {
+  0%, 88%  { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+  89%      { color: #39FF14; -webkit-text-stroke: 5px #003300; text-shadow: 0 0 12px #39FF14, 0 0 30px rgba(57,255,20,0.8); }
+  89.5%    { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+  90.5%    { color: #00FF41; -webkit-text-stroke: 5px #001a00; text-shadow: 0 0 20px #00FF41, 0 0 50px rgba(0,255,65,0.6); }
+  91.5%    { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+  100%     { color: #2ECC10; -webkit-text-stroke: 5px #000; text-shadow: none; }
+}
+.logo.matrix-active span {
+  color: #00FF41 !important;
+  -webkit-text-stroke: 9px #001a00 !important;
+  animation: matrix-pulse 2s ease-in-out infinite !important;
+  text-shadow: none;
+}
+.logo.matrix-active .c,
+.logo.matrix-active .o { -webkit-text-stroke: 7px #001a00 !important; }
+@keyframes matrix-pulse {
+  0%, 100% { color: #00FF41; text-shadow: 0 0 8px #00FF41, 0 0 24px rgba(0,255,65,0.7), 0 0 60px rgba(0,255,65,0.3); }
+  50%       { color: #39FF85; text-shadow: 0 0 4px #39FF85, 0 0 14px rgba(57,255,133,0.5), 0 0 35px rgba(57,255,133,0.2); }
+}
 .challenge-code {
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   color: var(--phosphor);
@@ -120,8 +146,8 @@ body {
 </head>
 <body>
 
-<div class="logo">
-  <span class="d1">D</span><span class="e1">E</span><span class="c">c</span><span class="o">o</span><span class="d2">D</span><span class="l">L</span><span class="e2">E</span>
+<div class="logo" id="challenge-logo">
+  <span class="d1">D</span><span class="e1">E</span><span class="c">c</span><span class="o">o</span><span class="mid-d" id="challenge-mid-d">D</span><span class="l">L</span><span class="e2">E</span>
 </div>
 
 <div class="challenge-code" id="code-display">:/System> CHALLENGE INCOMING</div>
@@ -155,6 +181,21 @@ body {
     codeEl.textContent = ':/System> NO CODE DETECTED';
     statusEl.textContent = 'This link is missing a challenge code.';
   }
+})();
+</script>
+
+<script>
+(function () {
+  var midD = document.getElementById('challenge-mid-d');
+  var logo = document.getElementById('challenge-logo');
+  var matrixTimer = null;
+  midD.addEventListener('click', function () {
+    logo.classList.add('matrix-active');
+    clearTimeout(matrixTimer);
+    matrixTimer = setTimeout(function () {
+      logo.classList.remove('matrix-active');
+    }, 5000);
+  });
 })();
 </script>
 
