@@ -1337,6 +1337,106 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
 .journal-btn .btn-sub { display: block; font-size: 0.58rem; opacity: 0.6; letter-spacing: 0.2em; }
 .journal-btn .btn-main { display: block; font-size: 0.85rem; letter-spacing: 0.08em; font-weight: 700; }
 
+/* ═══════════════════════════════
+   MINI ANNOUNCEMENT — NOVELLA CALLOUT
+═══════════════════════════════ */
+.mini-announce {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+  padding: 0.6rem 1.1rem 0.6rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0,255,65,0.35);
+  background:
+    linear-gradient(90deg, rgba(0,206,209,0.08) 0%, rgba(0,0,0,0.25) 50%, rgba(0,255,65,0.08) 100%);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  box-shadow:
+    inset 0 0 18px rgba(0,255,65,0.04),
+    0 0 22px rgba(0,255,65,0.08);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+.mini-announce:hover {
+  border-color: rgba(0,255,65,0.7);
+  box-shadow:
+    inset 0 0 18px rgba(0,255,65,0.08),
+    0 0 32px rgba(0,255,65,0.2);
+  transform: translateY(-2px);
+}
+.mini-announce .mini-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(196,170,120,0.2);
+  flex-shrink: 0;
+}
+.mini-announce .mini-badge .mini-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--phosphor);
+  box-shadow: 0 0 8px var(--phosphor), 0 0 14px rgba(0,255,65,0.6);
+  animation: mini-pulse 1.6s ease-in-out infinite;
+}
+@keyframes mini-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.75); }
+}
+.mini-announce .mini-badge .mini-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.25em;
+  color: var(--phosphor);
+  text-transform: uppercase;
+  text-shadow: 0 0 6px rgba(0,255,65,0.4);
+  font-weight: 700;
+}
+.mini-announce .mini-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+.mini-announce .mini-copy .mini-title {
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  color: var(--tile-warm);
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mini-announce .mini-copy .mini-title .mini-hl-aiplus { color: #00CED1; }
+.mini-announce .mini-copy .mini-title .mini-hl-system { color: #00FF41; }
+.mini-announce .mini-copy .mini-sub {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: rgba(245,236,215,0.55);
+  text-transform: uppercase;
+}
+.mini-announce .mini-arrow {
+  flex-shrink: 0;
+  color: var(--phosphor);
+  font-size: 0.85rem;
+  letter-spacing: 0;
+  transition: transform 0.2s;
+  text-shadow: 0 0 6px rgba(0,255,65,0.5);
+}
+.mini-announce:hover .mini-arrow { transform: translateX(4px); }
+
+@media (max-width: 520px) {
+  .mini-announce { padding: 0.55rem 0.9rem 0.55rem 0.6rem; gap: 0.55rem; }
+  .mini-announce .mini-copy .mini-title { font-size: 0.72rem; letter-spacing: 0.03em; }
+  .mini-announce .mini-copy .mini-sub { font-size: 0.55rem; }
+  .mini-announce .mini-badge .mini-label { font-size: 0.5rem; letter-spacing: 0.2em; }
+}
+
 </style>
 </head>
 <body>
@@ -1396,10 +1496,23 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
         </span>
       </a>
     </div>
+
+    <!-- Mini announcement: companion novella + drip-cast -->
+    <a href="#journal-logs" class="mini-announce" aria-label="Jump to DEcoDLE: The Journal Logs companion novella">
+      <span class="mini-badge">
+        <span class="mini-dot"></span>
+        <span class="mini-label">NEW</span>
+      </span>
+      <span class="mini-copy">
+        <span class="mini-title">
+          <span class="mini-hl-aiplus">:/AI+&gt;</span> &amp; <span class="mini-hl-system">:/System&gt;</span> · The Journal Logs
+        </span>
+        <span class="mini-sub">Companion novella · drip-cast starts 5/4</span>
+      </span>
+      <span class="mini-arrow" aria-hidden="true">↓</span>
+    </a>
   </div>
 </section>
-
-<!-- ═══ ABOUT STRIP ═══ -->
 <section class="about-strip">
   <div class="about-cell">
     <div class="about-icon">🎵</div>
