@@ -3,13 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DEcoDLE — Coming Soon</title>
-<meta name="description" content="A new kind of puzzle game. Coming soon to iOS and Android.">
-<meta property="og:title" content="DEcoDLE — Coming Soon">
-<meta property="og:description" content="A new kind of puzzle game. Coming soon to iOS and Android.">
-<meta property="og:image" content="og-image.png">
-<meta name="theme-color" content="#0D0B07">
-<link rel="icon" href="favicon.ico">
+<title>DEcoDLE — Acoustic Cypher Protocol</title>
+<link rel="icon" type="image/png" href="decodle_app_icon_512.png">
+<meta property="og:title" content="DEcoDLE — Acoustic Cypher Protocol">
+<meta property="og:description" content="Rhythm meets puzzle. Crack the code. A multimodal word game with beat-synced rhythm gates, colour-coded logic, and a sardonic AI that judges your every move.">
+<meta property="og:image" content="decodle_feature_graphic_playstore.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DEcoDLE — Acoustic Cypher Protocol">
+<meta name="twitter:description" content="Rhythm meets puzzle. Crack the code.">
+<meta name="twitter:image" content="decodle_feature_graphic_playstore.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -17,12 +20,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --phosphor:     #00FF41;
+  --phosphor: #00FF41;
   --phosphor-dim: #003300;
   --phosphor-glow: rgba(0,255,65,0.4);
-  --tile-warm:    #F5ECD7;
-  --tile-gold:    #C4AA78;
-  --ink:          #0D0B07;
+  --tile-warm: #F5ECD7;
+  --tile-gold: #C4AA78;
+  --ink: #0D0B07;
 }
 
 html { scroll-behavior: smooth; }
@@ -194,6 +197,7 @@ body {
   text-shadow: none;
 }
 .matrix-active .wl-sm { -webkit-text-stroke: 7px #001a00 !important; }
+
 @keyframes matrix-pulse {
   0%, 100% { color: #00FF41; text-shadow: 0 0 8px #00FF41, 0 0 24px rgba(0,255,65,0.7), 0 0 60px rgba(0,255,65,0.3); }
   50%       { color: #39FF85; text-shadow: 0 0 4px #39FF85, 0 0 14px rgba(57,255,133,0.5), 0 0 35px rgba(57,255,133,0.2); }
@@ -266,7 +270,7 @@ body {
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 /* ═══════════════════════════════
-   STORE SECTION
+   STORE BUTTONS
 ═══════════════════════════════ */
 .store-section {
   position: relative;
@@ -312,30 +316,662 @@ body {
 .store-btn .store-text { text-align: left; }
 .store-btn .store-text small { display: block; font-size: 0.6rem; opacity: 0.55; letter-spacing: 0.15em; text-transform: uppercase; }
 .store-btn .store-text strong { display: block; font-size: 0.9rem; font-family: 'Nunito', sans-serif; font-weight: 700; letter-spacing: 0.05em; }
-.badge-soon {
+
+/* ═══════════════════════════════
+   ABOUT STRIP
+═══════════════════════════════ */
+.about-strip {
+  background: #0a0806;
+  border-top: 1px solid rgba(196,170,120,0.1);
+  border-bottom: 1px solid rgba(196,170,120,0.1);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0;
+}
+.about-cell {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid rgba(196,170,120,0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.about-cell:last-child { border-right: none; }
+.about-icon { font-size: 1.8rem; line-height: 1; }
+.about-title { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--phosphor); letter-spacing: 0.08em; text-transform: uppercase; }
+.about-desc { font-size: 0.75rem; color: rgba(245,236,215,0.55); line-height: 1.7; letter-spacing: 0.04em; }
+
+/* ═══════════════════════════════
+   SCREENSHOT GALLERY
+═══════════════════════════════ */
+.gallery-section {
+  padding: 4rem 0 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  overflow: hidden;
+}
+.gallery-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--tile-gold);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+.gallery-heading {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  color: var(--tile-warm);
+  text-align: center;
+  padding: 0 1rem;
+}
+.gallery-heading span { color: var(--phosphor); }
+
+.gallery-track-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.gallery-track-wrap:active { cursor: grabbing; }
+.gallery-track-wrap::-webkit-scrollbar { display: none; }
+.gallery-track {
+  display: flex;
+  gap: 16px;
+  padding: 1rem 2rem 1.5rem;
+  width: max-content;
+}
+.screenshot-frame {
+  flex-shrink: 0;
+  width: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(196,170,120,0.15);
+  background: #0a0806;
+  position: relative;
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.screenshot-frame:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(0,255,65,0.35);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.6), 0 0 20px rgba(0,255,65,0.1);
+}
+.screenshot-frame img { width: 100%; display: block; border-radius: 18px; }
+.screenshot-caption {
   position: absolute;
-  bottom: 6px; right: 6px;
-  top: auto;
-  font-size: 0.5rem;
-  letter-spacing: 0.2em;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem 0.75rem 0.75rem;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.85));
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,236,215,0.6);
+  text-align: center;
+  border-radius: 0 0 18px 18px;
+}
+.gallery-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 0 1rem;
+}
+.gallery-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(196,170,120,0.25);
+  background: rgba(13,11,7,0.7);
+  color: var(--tile-warm);
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+.gallery-arrow:hover {
+  border-color: var(--phosphor);
+  background: rgba(0,255,65,0.08);
+  transform: scale(1.1);
+}
+.gallery-progress {
+  width: min(280px, 50vw);
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(196,170,120,0.12);
+  position: relative;
+  overflow: hidden;
+}
+.gallery-progress-fill {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  border-radius: 2px;
+  background: var(--phosphor);
+  box-shadow: 0 0 8px var(--phosphor-glow);
+  transition: width 0.15s ease-out;
+  width: 0%;
+}
+
+
+/* ═══════════════════════════════
+   FEATURE SECTIONS
+═══════════════════════════════ */
+.section-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--tile-gold);
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+.section-heading {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  color: var(--tile-warm);
+  text-align: center;
+  line-height: 1.15;
+}
+.section-heading span { color: var(--phosphor); }
+.section-sub {
+  font-size: 0.78rem;
+  color: rgba(245,236,215,0.45);
+  text-align: center;
+  max-width: 560px;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+}
+
+/* ─── FEATURE STRIP: side-by-side phone + text ─── */
+.feature-strip {
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  width: 100%;
+}
+.feature-row.reverse { flex-direction: row-reverse; }
+
+@media (max-width: 700px) {
+  .feature-row, .feature-row.reverse { flex-direction: column; gap: 2rem; }
+}
+
+.feature-phones {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+  align-items: flex-end;
+}
+
+.feature-phone {
+  width: 155px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1.5px solid rgba(196,170,120,0.18);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(0,0,0,0.4);
+  background: #000;
+  transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s;
+  position: relative;
+}
+.feature-phone:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  border-color: rgba(0,255,65,0.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 24px rgba(0,255,65,0.12);
+}
+.feature-phone.tall { width: 165px; }
+.feature-phone.offset { transform: translateY(-20px); }
+.feature-phone.offset:hover { transform: translateY(-28px) rotate(1deg); }
+.feature-phone img { width: 100%; display: block; }
+
+.feature-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.feature-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--phosphor);
-  background: rgba(0,255,65,0.12);
-  border: 1px solid rgba(0,255,65,0.3);
-  border-radius: 3px;
-  padding: 2px 5px;
+  opacity: 0.7;
+}
+.feature-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  color: var(--tile-warm);
+  line-height: 1.1;
+}
+.feature-title em { color: var(--phosphor); font-style: normal; }
+.feature-desc {
+  font-size: 0.8rem;
+  color: rgba(245,236,215,0.55);
+  line-height: 1.85;
+  letter-spacing: 0.04em;
+  max-width: 420px;
+}
+.feature-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+}
+.feature-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.75rem;
+  color: rgba(245,236,215,0.6);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+.feature-bullet::before {
+  content: '▶';
+  color: var(--phosphor);
+  font-size: 0.5rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+  opacity: 0.8;
+}
+
+/* ─── REWARDS GRID ─── */
+.rewards-section {
+  padding: 5rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  background: #090705;
+  border-top: 1px solid rgba(196,170,120,0.07);
+  border-bottom: 1px solid rgba(196,170,120,0.07);
+}
+.rewards-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 900px;
+}
+.reward-card {
+  border-radius: 14px;
+  border: 1px solid rgba(196,170,120,0.12);
+  background: rgba(255,255,255,0.025);
+  padding: 0;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.reward-card:hover {
+  border-color: rgba(0,255,65,0.25);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 16px rgba(0,255,65,0.06);
+}
+.reward-card-img {
+  width: 100%;
+  aspect-ratio: 9/18;
+  overflow: hidden;
+  background: #000;
+  max-height: 480px;
+  cursor: zoom-in;
+}
+.reward-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  filter: brightness(0.92);
+  transition: filter 0.3s, transform 0.4s;
+}
+.reward-card:hover .reward-card-img img { filter: brightness(1); transform: scale(1.03); }
+.reward-card-body { padding: 1.2rem 1.3rem 1.4rem; flex: 1; }
+.reward-card-tag {
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--phosphor);
+  opacity: 0.65;
+  margin-bottom: 0.4rem;
+}
+.reward-card-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--tile-warm);
+  margin-bottom: 0.4rem;
+}
+.reward-card-desc {
+  font-size: 0.72rem;
+  color: rgba(245,236,215,0.45);
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+}
+
+/* ─── HOW TO PLAY PANEL ─── */
+.htp-section {
+  padding: 5rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.htp-scroll-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+  display: flex;
+  justify-content: center;
+}
+.htp-scroll-wrap:active { cursor: grabbing; }
+.htp-scroll-wrap::-webkit-scrollbar { display: none; }
+.htp-track {
+  display: flex;
+  gap: 14px;
+  padding: 0.5rem 2rem 1rem;
+  width: max-content;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+.htp-frame {
+  flex-shrink: 0;
+  width: 220px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(196,170,120,0.12);
+  background: #000;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+  cursor: zoom-in;
+}
+.htp-frame:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0,255,65,0.3);
+}
+.htp-frame img { width: 100%; display: block; }
+.htp-frame-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.2rem 0.6rem 0.6rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.9));
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,236,215,0.5);
+  text-align: center;
+}
+
+/* ─── LIGHTBOX (click-to-zoom) ─── */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+}
+.lightbox-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.lightbox-overlay img {
+  max-width: 92vw;
+  max-height: 92vh;
+  border-radius: 16px;
+  box-shadow: 0 0 60px rgba(0,255,65,0.12), 0 20px 80px rgba(0,0,0,0.6);
+  border: 1px solid rgba(0,255,65,0.2);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+.lightbox-overlay.active img {
+  transform: scale(1);
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(245,236,215,0.2);
+  background: rgba(0,0,0,0.6);
+  color: var(--tile-warm);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background 0.2s;
+}
+.lightbox-close:hover {
+  border-color: var(--phosphor);
+  background: rgba(0,255,65,0.1);
+}
+
+/* also make screenshot-frames zoomable */
+.screenshot-frame { cursor: zoom-in; }
+
+/* ─── END CARD SHOWCASE ─── */
+.endcard-section {
+  padding: 5rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  background: #090705;
+  border-top: 1px solid rgba(196,170,120,0.07);
+}
+.endcard-phones {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+}
+.endcard-phone {
+  width: 180px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(196,170,120,0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  background: #000;
+  transition: transform 0.3s, border-color 0.3s;
+  position: relative;
+  cursor: zoom-in;
+}
+.endcard-phone:hover { transform: translateY(-6px); border-color: rgba(0,255,65,0.35); }
+.endcard-phone img { width: 100%; display: block; }
+.endcard-phone:nth-child(2) { transform: translateY(-16px); }
+.endcard-phone:nth-child(2):hover { transform: translateY(-22px); }
+.endcard-phone:nth-child(3) { transform: translateY(-8px); }
+.endcard-phone:nth-child(3):hover { transform: translateY(-14px); }
+
+/* ─── CHALLENGE SECTION ─── */
+.challenge-section {
+  padding: 5rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+.challenge-inner {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-width: 900px;
+  width: 100%;
+}
+@media (max-width: 700px) {
+  .challenge-inner { flex-direction: column; gap: 2rem; }
+}
+.challenge-phones {
+  display: flex;
+  gap: 14px;
+  flex-shrink: 0;
+  align-items: center;
+}
+.challenge-phone {
+  width: 160px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1.5px solid rgba(196,170,120,0.15);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.55);
+  background: #000;
+  transition: transform 0.3s, border-color 0.3s;
+}
+.challenge-phone:hover { transform: translateY(-6px); border-color: rgba(0,255,65,0.35); }
+.challenge-phone img { width: 100%; display: block; }
+.challenge-copy {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* ─── PRO CTA ─── */
+.pro-cta {
+  padding: 5rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(0,255,65,0.04) 0%, transparent 70%);
+  border-top: 1px solid rgba(196,170,120,0.07);
+}
+.pro-phones {
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pro-phone {
+  width: 175px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,255,65,0.2);
+  box-shadow: 0 12px 44px rgba(0,0,0,0.55), 0 0 20px rgba(0,255,65,0.06);
+  background: #000;
+  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.pro-phone:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0,255,65,0.45);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 28px rgba(0,255,65,0.15);
+}
+.pro-phone img { width: 100%; display: block; }
+.pro-price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--phosphor);
+  text-shadow: 0 0 20px rgba(0,255,65,0.4);
+}
+.pro-price-tag small {
+  font-size: 0.75rem;
+  font-weight: 400;
+  font-family: 'Share Tech Mono', monospace;
+  color: rgba(245,236,215,0.4);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-shadow: none;
+  align-self: flex-end;
+  margin-bottom: 0.5rem;
+}
+.pro-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  max-width: 600px;
+}
+.pro-chip {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
+  border: 1px solid rgba(0,255,65,0.25);
+  color: rgba(245,236,215,0.6);
+  background: rgba(0,255,65,0.05);
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,255,65,0.5);
+  background: rgba(0,255,65,0.08);
+  color: var(--phosphor);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.cta-btn:hover {
+  background: rgba(0,255,65,0.15);
+  border-color: var(--phosphor);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0,255,65,0.2);
+}
+
+/* ─── DIVIDER ─── */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(196,170,120,0.15), transparent);
 }
 
 /* ═══════════════════════════════
    FOOTER
 ═══════════════════════════════ */
 footer {
+  background: #070604;
+  border-top: 1px solid rgba(196,170,120,0.08);
   padding: 2rem 1.5rem 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-  border-top: 1px solid rgba(196,170,120,0.08);
+  text-align: center;
 }
 .footer-logo {
   font-family: 'Nunito', sans-serif;
@@ -351,8 +987,8 @@ footer {
   display: inline-block;
   -webkit-text-stroke: 2px #000;
 }
-.fl-big  { font-size: 1.4rem; -webkit-text-stroke: 2px #000; }
-.fl-sm   { font-size: 0.95rem; -webkit-text-stroke: 1.5px #000; position: relative; top: 0.12em; }
+.fl-big  { font-size: 1.4rem; }
+.fl-sm   { font-size: 0.95rem; position: relative; top: 0.12em; }
 .fl-d1   { color: #2ECC10; }
 .fl-e1   { color: #A8E000; }
 .fl-c    { color: #FF8C00; }
@@ -368,92 +1004,806 @@ footer {
 }
 
 footer nav { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
-footer nav a {
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(245,236,215,0.35);
+footer nav a { color: rgba(245,236,215,0.4); text-decoration: none; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; transition: color 0.2s; }
+footer nav a:hover { color: var(--phosphor); }
+footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 0.15em; }
+
+/* ═══════════════════════════════
+   SOCIAL ICONS (footer + journal section)
+═══════════════════════════════ */
+.social-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.social-link {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(196,170,120,0.25);
+  background: rgba(13,11,7,0.7);
+  color: rgba(245,236,215,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  transition: color 0.2s;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
 }
-footer nav a:hover { color: var(--tile-gold); }
-.copy {
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: rgba(245,236,215,0.2);
+.social-link svg { width: 16px; height: 16px; display: block; }
+.social-link:hover {
+  border-color: var(--phosphor);
+  background: rgba(0,255,65,0.08);
+  color: var(--phosphor);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0,255,65,0.18);
 }
+.social-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(196,170,120,0.55);
+  margin-right: 0.25rem;
+}
+
+/* ═══════════════════════════════
+   JOURNAL LOGS — COMPANION NOVELLA
+═══════════════════════════════ */
+.journal-section {
+  position: relative;
+  padding: 5.5rem 2rem 6.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  background:
+    radial-gradient(ellipse at 20% 10%, rgba(0,255,65,0.035) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 90%, rgba(0,206,209,0.035) 0%, transparent 55%),
+    #080603;
+  border-top: 1px solid rgba(196,170,120,0.08);
+  border-bottom: 1px solid rgba(196,170,120,0.08);
+  overflow: hidden;
+}
+
+/* CRT scan overlay on the section */
+.journal-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px, transparent 3px,
+    rgba(0,0,0,0.05) 3px, rgba(0,0,0,0.05) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+.journal-section > * { position: relative; z-index: 2; }
+
+.journal-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  max-width: 720px;
+}
+.journal-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.6rem, 4.4vw, 2.4rem);
+  color: var(--tile-warm);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+.journal-wordmark {
+  display: inline;
+  letter-spacing: -0.01em;
+  paint-order: stroke fill;
+}
+.journal-wordmark span {
+  display: inline;
+}
+.journal-title-rest {
+  color: var(--tile-warm);
+}
+.journal-title .sub {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-weight: 400;
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  color: var(--phosphor);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0,255,65,0.35);
+  margin-top: 0.55rem;
+}
+.journal-tagline {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  color: rgba(245,236,215,0.65);
+  letter-spacing: 0.06em;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 560px;
+}
+
+/* Two-voice duet */
+.journal-duet {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 780px;
+  margin-top: 0.5rem;
+}
+@media (max-width: 620px) {
+  .journal-duet { grid-template-columns: 1fr; }
+}
+.journal-voice {
+  padding: 1.3rem 1.4rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(196,170,120,0.15);
+  background: rgba(13,11,7,0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  position: relative;
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+.journal-voice:hover { transform: translateY(-3px); }
+.journal-voice .handle {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+.journal-voice .purpose {
+  font-size: 0.78rem;
+  color: rgba(245,236,215,0.55);
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+}
+.journal-voice.aiplus {
+  border-color: rgba(0,206,209,0.28);
+  box-shadow: inset 0 0 30px rgba(0,206,209,0.04);
+}
+.journal-voice.aiplus:hover {
+  border-color: rgba(0,206,209,0.55);
+  box-shadow: inset 0 0 30px rgba(0,206,209,0.06), 0 0 22px rgba(0,206,209,0.12);
+}
+.journal-voice.aiplus .handle {
+  color: #00CED1;
+  text-shadow: 0 0 8px rgba(0,206,209,0.45);
+}
+.journal-voice.system {
+  border-color: rgba(0,255,65,0.28);
+  box-shadow: inset 0 0 30px rgba(0,255,65,0.03);
+}
+.journal-voice.system:hover {
+  border-color: rgba(0,255,65,0.55);
+  box-shadow: inset 0 0 30px rgba(0,255,65,0.05), 0 0 22px rgba(0,255,65,0.12);
+}
+.journal-voice.system .handle {
+  color: #00FF41;
+  text-shadow: 0 0 8px rgba(0,255,65,0.45);
+}
+
+.journal-body {
+  max-width: 640px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: rgba(245,236,215,0.6);
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.journal-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  max-width: 620px;
+  width: 100%;
+}
+.journal-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.78rem;
+  color: rgba(245,236,215,0.6);
+  letter-spacing: 0.03em;
+  line-height: 1.55;
+  padding: 0.55rem 0.9rem;
+  border-left: 2px solid rgba(0,255,65,0.25);
+  background: rgba(255,255,255,0.015);
+}
+.journal-bullet::before {
+  content: '>';
+  color: var(--phosphor);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+  opacity: 0.8;
+}
+
+/* DRIP-CAST banner */
+.journal-dripcast {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 1rem;
+  padding: 1.4rem 1.6rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,255,65,0.3);
+  background:
+    linear-gradient(180deg, rgba(0,255,65,0.06) 0%, rgba(0,255,65,0.02) 100%);
+  box-shadow:
+    inset 0 0 24px rgba(0,255,65,0.04),
+    0 0 28px rgba(0,255,65,0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  text-align: center;
+  position: relative;
+}
+.dripcast-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--phosphor);
+  text-shadow: 0 0 8px rgba(0,255,65,0.5);
+}
+.dripcast-status .dot-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--phosphor);
+  box-shadow: 0 0 10px var(--phosphor), 0 0 20px rgba(0,255,65,0.5);
+  animation: dripcast-pulse 1.6s ease-in-out infinite;
+}
+@keyframes dripcast-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+.dripcast-headline {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(0.9rem, 2.4vw, 1.05rem);
+  letter-spacing: 0.12em;
+  color: var(--tile-warm);
+  text-transform: uppercase;
+}
+.dripcast-headline em {
+  font-style: normal;
+  color: var(--phosphor);
+  text-shadow: 0 0 10px rgba(0,255,65,0.4);
+}
+.dripcast-body {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(245,236,215,0.65);
+  line-height: 1.75;
+  letter-spacing: 0.04em;
+  max-width: 560px;
+}
+.dripcast-body .handle-aiplus { color: #00CED1; font-weight: 700; text-shadow: 0 0 6px rgba(0,206,209,0.4); }
+.dripcast-body .handle-system { color: #00FF41; font-weight: 700; text-shadow: 0 0 6px rgba(0,255,65,0.4); }
+
+.journal-cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+.journal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
+  border: 1.5px solid rgba(196,170,120,0.4);
+  background: rgba(13,11,7,0.75);
+  color: var(--tile-warm);
+  text-decoration: none;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.journal-btn:hover {
+  border-color: var(--phosphor);
+  background: rgba(0,255,65,0.08);
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(0,255,65,0.15);
+}
+.journal-btn.primary {
+  border-color: rgba(0,255,65,0.5);
+  background: rgba(0,255,65,0.08);
+  color: var(--phosphor);
+}
+.journal-btn.primary:hover {
+  background: rgba(0,255,65,0.15);
+  box-shadow: 0 0 28px rgba(0,255,65,0.25);
+}
+.journal-btn .btn-icon { width: 18px; height: 18px; flex-shrink: 0; }
+.journal-btn .btn-sub { display: block; font-size: 0.58rem; opacity: 0.6; letter-spacing: 0.2em; }
+.journal-btn .btn-main { display: block; font-size: 0.85rem; letter-spacing: 0.08em; font-weight: 700; }
+
 </style>
 </head>
 <body>
 
-<!-- AUDIO (keep filenames matching your originals) -->
-<audio id="track-menu" src="music-menu.wav" preload="none" loop></audio>
+<!-- ═══ MUSIC ═══ -->
+<audio id="track-menu" src="music-menu.wav" preload="auto"></audio>
+<audio id="track-endcard" src="music-End-Card.wav" preload="auto"></audio>
 
-<!-- MUSIC BUTTON -->
-<button class="music-btn muted" id="music-btn" aria-label="Toggle music">
-  <span id="music-icon">♩</span>
+<button class="music-btn muted" id="music-btn" title="Toggle music">
+  <span id="music-icon">♪</span>
   <span class="music-label" id="music-label">music off</span>
 </button>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero" id="hero">
+<section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-scan"></div>
 
-  <div class="logo-block" id="logo-block">
-
-    <!-- WORDMARK -->
-    <div class="wordmark" id="hero-wordmark">
+  <div class="logo-block">
+    <div class="wordmark">
       <span class="wl wl-big c-green">D</span>
       <span class="wl wl-big c-limegreen">E</span>
       <span class="wl wl-sm  c-orange">c</span>
       <span class="wl wl-sm  c-pink">o</span>
-      <span class="wl wl-big mid-d" id="mid-d">D</span>
+      <span class="wl wl-big mid-d">D</span>
       <span class="wl wl-big c-royalblue">L</span>
       <span class="wl wl-big c-teal">E</span>
     </div>
 
-    <!-- SUBTITLE -->
-    <div class="subtitle">A puzzle game</div>
+    <div class="subtitle">acoustic cypher protocol</div>
 
-    <!-- RAINBOW BAR -->
     <div class="bar-wrap">
-      <span class="gear">⚙</span>
       <div class="bar-track"></div>
-      <span class="gear" style="animation-direction:reverse">⚙</span>
+      <span class="gear">⚙</span>
     </div>
 
-    <!-- INIT TEXT -->
     <div class="init-text" id="init-text">
-      COMING SOON<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+      INITIALIZING<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
     </div>
+  </div>
 
-  </div><!-- /logo-block -->
-
-  <!-- STORE BUTTONS -->
   <div class="store-section">
     <div class="store-label">Available on</div>
     <div class="store-buttons">
-      <a href="#" class="store-btn" title="App Store — Coming Soon">
+      <a href="https://apps.apple.com/us/app/decodle/id6762175972" target="_blank" rel="noopener" class="store-btn" title="App Store">
         <span class="store-icon">🍎</span>
         <span class="store-text">
           <small>Download on the</small>
           <strong>App Store</strong>
         </span>
-        <span class="badge-soon">Soon</span>
       </a>
-      <a href="#" class="store-btn" title="Google Play — Coming Soon">
+      <a href="https://play.google.com/store/apps/details?id=com.kallogic.decodle" target="_blank" rel="noopener" class="store-btn" title="Google Play">
         <span class="store-icon">▶</span>
         <span class="store-text">
           <small>Get it on</small>
           <strong>Google Play</strong>
         </span>
-        <span class="badge-soon" style="top:6px;bottom:auto;">Soon</span>
       </a>
     </div>
   </div>
+</section>
 
-</section><!-- /hero -->
+<!-- ═══ ABOUT STRIP ═══ -->
+<section class="about-strip">
+  <div class="about-cell">
+    <div class="about-icon">🎵</div>
+    <div class="about-title">Acoustic Cypher</div>
+    <div class="about-desc">Tap symbols to the beat to earn your attempt. Every frequency hides a clue. Every rhythm is a key.</div>
+  </div>
+  <div class="about-cell">
+    <div class="about-icon">🧩</div>
+    <div class="about-title">Daily Puzzle</div>
+    <div class="about-desc">One cipher drops every day, same for all players globally. Six attempts. One hidden sequence. Can you decode it?</div>
+  </div>
+  <div class="about-cell">
+    <div class="about-icon">⭐</div>
+    <div class="about-title">Perfect Sync</div>
+    <div class="about-desc">Hit the full sequence in one clean cycle to earn powerful rewards — Sight Hacks, Hint Reveals, and the AI+ Assist Bot.</div>
+  </div>
+  <div class="about-cell">
+    <div class="about-icon">🔐</div>
+    <div class="about-title">Challenge Mode</div>
+    <div class="about-desc">With Challenge Codes you set the trap. They crack it. Create a sequence, encrypt it into a shareable DC-#### code, and send it to anyone. Higher difficulty = bigger star multiplier.</div>
+  </div>
+</section>
+
+<!-- ═══ FEATURE: THE PUZZLE BOARD ═══ -->
+<div class="section-divider"></div>
+<section style="padding:5rem 2rem 0; display:flex; flex-direction:column; align-items:center; gap:0.75rem; text-align:center;">
+  <div class="section-eyebrow">The Protocol</div>
+  <h2 class="section-heading">Decode the <span>hidden sequence</span></h2>
+  <p class="section-sub">Eight symbols. Five positions. Up to six attempts. Each guess unlocks a wave of colour-coded clues — green for correct, yellow for present, grey for absent.</p>
+</section>
+
+<section class="feature-strip" style="padding-top:3rem;">
+  <div class="feature-row">
+    <div class="feature-phones">
+      <div class="feature-phone tall">
+        <img src="decodle_ios_06_puzzle_mid_1320x2868.png" alt="Puzzle board mid game">
+      </div>
+      <div class="feature-phone tall offset">
+        <img src="decodle_ios_07_puzzle_win_1320x2868.png" alt="Puzzle board win state">
+      </div>
+    </div>
+    <div class="feature-copy">
+      <div class="feature-tag">Wordle DNA · Rhythm Heart</div>
+      <h3 class="feature-title">Read the board.<br><em>Crack the code.</em></h3>
+      <p class="feature-desc">Each puzzle row is earned, not given. You fight for every attempt through the Acoustic Cypher before placing your guess. The pressure builds. The board fills. The answer is in there — find it.</p>
+      <div class="feature-bullets">
+        <div class="feature-bullet">5×6 grid — five symbol positions, up to six rows</div>
+        <div class="feature-bullet">Green / Yellow / Grey tile feedback after every guess</div>
+        <div class="feature-bullet">Bypass a cypher round at the cost of one attempt</div>
+        <div class="feature-bullet">Hint Reveal pre-fills a correct position when earned</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ FEATURE: ACOUSTIC CYPHER ═══ -->
+  <div class="feature-row reverse">
+    <div class="feature-phones">
+      <div class="feature-phone">
+        <img src="decodle_ios_03_cypher_ready_1320x2868.png" alt="Acoustic Cypher ready state">
+      </div>
+      <div class="feature-phone offset">
+        <img src="decodle_ios_04_cypher_active_1320x2868.png" alt="Acoustic Cypher active — tapping symbols">
+      </div>
+      <div class="feature-phone">
+        <img src="decodle_ios_05_perfect_sync_1320x2868.png" alt="Perfect Sync achieved">
+      </div>
+    </div>
+    <div class="feature-copy">
+      <div class="feature-tag">Core Mechanic</div>
+      <h3 class="feature-title">The <em>Acoustic Cypher</em><br>Protocol</h3>
+      <p class="feature-desc">Symbols flash to a beat. Tap the matching key as each one lights up. Complete the full sequence in order to earn a puzzle attempt. Execute it all in one clean cycle and trigger <strong style="color:var(--phosphor)">Perfect Synchronization</strong>.</p>
+      <div class="feature-bullets">
+        <div class="feature-bullet">DSP-scheduled timing — compensates for your device's audio delay</div>
+        <div class="feature-bullet">3 difficulty tiers: Easy multi-cycle, Hard precision, Expert survival</div>
+        <div class="feature-bullet">The system is watching. It has opinions. Act accordingly.</div>
+        <div class="feature-bullet">AI+ Assist Bot auto-completes a round when fully charged</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ REWARDS SECTION ═══ -->
+<section class="rewards-section">
+  <div class="rewards-header">
+    <div class="section-eyebrow">Perfect Sync Rewards</div>
+    <h2 class="section-heading">Play well. <span>Get weapons.</span></h2>
+    <p class="section-sub">Land every symbol in one clean cycle and choose your reward. Stack them. Deploy them wisely. The endgame belongs to the synchronized.</p>
+  </div>
+
+  <div class="rewards-grid">
+
+    <div class="reward-card">
+      <div class="reward-card-img">
+        <img src="decodle_ios_05_perfect_sync_1320x2868.png" alt="Perfect Sync achieved — reward trigger">
+      </div>
+      <div class="reward-card-body">
+        <div class="reward-card-tag">Trigger</div>
+        <div class="reward-card-title">⚡ Perfect Synchronization</div>
+        <div class="reward-card-desc">Land every symbol in one clean cycle to trigger a Perfect Sync. Earn Byte Tokens and choose your reward — Sight Hacks, Hint Reveals, AI+ charges, or bonus DECRYPT points.</div>
+      </div>
+    </div>
+
+    <div class="reward-card">
+      <div class="reward-card-img">
+        <img src="decodle_ios_09_rewards_1320x2868.png" alt="Perfect Sync reward selection screen">
+      </div>
+      <div class="reward-card-body">
+        <div class="reward-card-tag">Reward Select</div>
+        <div class="reward-card-title">🎰 Spend Your Sync Rewards</div>
+        <div class="reward-card-desc">Roll the RNG BitFlip for a random reward, or spend Byte Tokens on guaranteed upgrades: Binary Cypher Sight//Hack, Hint Reveal, AI+ Assist charges, or Dividend bonus points.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ DIFFICULTY SELECT ═══ -->
+<section class="feature-strip" style="padding-bottom:3rem;">
+  <div class="feature-row">
+    <div class="feature-phones" style="justify-content:center;">
+      <div class="feature-phone tall">
+        <img src="decodle_ios_02_difficulty_1320x2868.png" alt="Difficulty select screen — Casual, Hard, Expert">
+      </div>
+    </div>
+    <div class="feature-copy">
+      <div class="feature-tag">Three Tiers</div>
+      <h3 class="feature-title"><em>Choose</em> your<br>difficulty.</h3>
+      <p class="feature-desc">Casual lets anyone crack the cypher — skill only determines how fast. Hard tightens timing windows. Expert is a different animal entirely. Human completions are rare. The system has noted this.</p>
+      <div class="feature-bullets">
+        <div class="feature-bullet">CASUAL — multi-cycle taps, very relaxed path to the puzzle</div>
+        <div class="feature-bullet">HARD — faster patterns, errors cost positions</div>
+        <div class="feature-bullet">EXPERT — fastest tempo, insane precision demand</div>
+        <div class="feature-bullet">Challenge Mode adds 1.5× and 2.0× star multipliers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY: FULL SCROLLABLE ═══ -->
+<section class="gallery-section">
+  <div class="gallery-eyebrow">gameplay</div>
+  <div class="gallery-heading">See it in <span>action</span></div>
+
+  <div class="gallery-track-wrap" id="gallery-wrap">
+    <div class="gallery-track" id="gallery-track">
+
+      <div class="screenshot-frame">
+        <img src="decodle_ios_01_hero_1320x2868.png" alt="DEcoDLE hero splash screen">
+        <div class="screenshot-caption">Tap to Begin</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_02_difficulty_1320x2868.png" alt="Difficulty select">
+        <div class="screenshot-caption">Select Mode</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_03_cypher_ready_1320x2868.png" alt="Acoustic Cypher ready">
+        <div class="screenshot-caption">Cypher Ready</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_04_cypher_active_1320x2868.png" alt="Acoustic Cypher active">
+        <div class="screenshot-caption">Acoustic Cypher</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_05_perfect_sync_1320x2868.png" alt="Perfect Sync achieved">
+        <div class="screenshot-caption">Perfect Sync!</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_06_puzzle_mid_1320x2868.png" alt="Puzzle board mid game">
+        <div class="screenshot-caption">Mid-Game</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_07_puzzle_win_1320x2868.png" alt="Puzzle board win">
+        <div class="screenshot-caption">Got It!</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_08_endcard_1320x2868.png" alt="End card summary">
+        <div class="screenshot-caption">End Card</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_09_rewards_1320x2868.png" alt="Perfect Sync rewards">
+        <div class="screenshot-caption">Sync Rewards</div>
+      </div>
+      <div class="screenshot-frame">
+        <img src="decodle_ios_10_challenge_1320x2868.png" alt="Challenge Mode">
+        <div class="screenshot-caption">Challenge Mode</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="gallery-nav" id="gallery-nav">
+    <button class="gallery-arrow" id="gallery-prev" aria-label="Previous">◀</button>
+    <div class="gallery-progress">
+      <div class="gallery-progress-fill" id="gallery-fill"></div>
+    </div>
+    <button class="gallery-arrow" id="gallery-next" aria-label="Next">▶</button>
+  </div>
+</section>
+
+<!-- ═══ HOW TO PLAY PANEL STRIP ═══ -->
+<section class="htp-section">
+  <div class="section-eyebrow">Tutorial</div>
+  <h2 class="section-heading">Everything you need to <span>get started</span></h2>
+  <p class="section-sub">Six in-app tutorial panels walk you from first tap to Perfect Sync mastery. The full picture, before you even pick a difficulty.</p>
+
+  <div class="htp-scroll-wrap" id="htp-wrap">
+    <div class="htp-track">
+      <div class="htp-frame">
+        <img src="Tutorial1.PNG" alt="Tutorial — The Puzzle">
+        <div class="htp-frame-label">The Puzzle</div>
+      </div>
+      <div class="htp-frame">
+        <img src="Tutorial2.PNG" alt="Tutorial — The Cypher">
+        <div class="htp-frame-label">The Cypher</div>
+      </div>
+      <div class="htp-frame">
+        <img src="Tutorial3.PNG" alt="Tutorial — Rewards">
+        <div class="htp-frame-label">Rewards</div>
+      </div>
+      <div class="htp-frame">
+        <img src="Tutorial4.PNG" alt="Tutorial — Scoring">
+        <div class="htp-frame-label">Scoring</div>
+      </div>
+      <div class="htp-frame">
+        <img src="Tutorial5.PNG" alt="Tutorial — Tips">
+        <div class="htp-frame-label">Pro Tips</div>
+      </div>
+      <div class="htp-frame">
+        <img src="Tutorial6.PNG" alt="Tutorial — You're Ready">
+        <div class="htp-frame-label">You're Ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ END CARD SHOWCASE ═══ -->
+<section class="endcard-section">
+  <div class="section-eyebrow">End of Round</div>
+  <h2 class="section-heading">Every session ends with <span>a verdict.</span></h2>
+  <p class="section-sub">DECRYPT SCORE captures your Performance and Perfection on display in each session. Daily stats. Shareable result card. Plus the system always has something to say about how you played.</p>
+
+  <div class="endcard-phones">
+    <div class="endcard-phone">
+      <img src="decodle_ios_08_endcard_1320x2868.png" alt="End card — DECRYPT SCORE summary">
+    </div>
+    <div class="endcard-phone">
+      <img src="decodle_ios_07_puzzle_win_1320x2868.png" alt="Puzzle win state">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHALLENGE MODE ═══ -->
+<section class="challenge-section">
+  <div class="section-eyebrow">Social</div>
+  <h2 class="section-heading">Challenge a <span>friend.</span></h2>
+
+  <div class="challenge-inner">
+    <div class="challenge-phones">
+      <div class="challenge-phone">
+        <img src="decodle_ios_10_challenge_1320x2868.png" alt="Challenge Mode — create and share DC codes">
+      </div>
+    </div>
+    <div class="challenge-copy">
+      <div class="feature-tag">Challenge Mode</div>
+      <h3 class="feature-title">You set the trap.<br><em>They crack it.</em></h3>
+      <p class="feature-desc">Create a five symbol sequence, encrypt it into a shareable DC-#### code, and send it to anyone. They pick their difficulty — harder difficulty means a bigger star multiplier. Every challenge is a unique sequence that only you designed.</p>
+      <div class="feature-bullets">
+        <div class="feature-bullet">Pick any 5-symbol sequence from the 8-symbol alphabet</div>
+        <div class="feature-bullet">Generate an opaque DC-#### challenge code instantly</div>
+        <div class="feature-bullet">Recipient selects Casual (1×), Hard (1.5×), or Expert (2×)</div>
+        <div class="feature-bullet">PRO feature — unlocked with a one-time $2.99 upgrade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRO CTA ═══ -->
+<section class="pro-cta">
+  <div class="section-eyebrow">DEcoDLE PRO</div>
+  <h2 class="section-heading">Unlock <span>PRO.</span> One time.</h2>
+
+  <div class="pro-phones">
+    <div class="pro-phone">
+      <img src="iAP1.PNG" alt="In-app purchase screen — PRO upgrade $2.99">
+    </div>
+    <div class="pro-phone">
+      <img src="iAP2.PNG" alt="PRO features unlocked confirmation">
+    </div>
+  </div>
+
+  <div class="pro-price-tag">
+    $2.99
+    <small>one-time · no subscription</small>
+  </div>
+
+  <div class="pro-features">
+    <span class="pro-chip">Ad-Free</span>
+    <span class="pro-chip">Offline</span>
+    <span class="pro-chip">Hard Mode</span>
+    <span class="pro-chip">Expert Mode</span>
+    <span class="pro-chip">Challenge Mode</span>
+    <span class="pro-chip">Premium Tone Sets</span>
+    <span class="pro-chip">Endless Play Unlocked</span>
+  </div>
+
+  <p class="section-sub" style="margin-top:0.5rem;">Free trial included on install. Try everything. Decide later. PRO is the clean, ad-free, offline-ready, unlimited experience — permanently.</p>
+
+  <div class="store-buttons" style="margin-top:0.5rem;">
+    <a href="https://apps.apple.com/us/app/decodle/id6762175972" target="_blank" rel="noopener" class="store-btn" title="App Store">
+      <span class="store-icon">🍎</span>
+      <span class="store-text">
+        <small>Download on the</small>
+        <strong>App Store</strong>
+      </span>
+    </a>
+    <a href="https://play.google.com/store/apps/details?id=com.kallogic.decodle" target="_blank" rel="noopener" class="store-btn" title="Google Play">
+      <span class="store-icon">▶</span>
+      <span class="store-text">
+        <small>Get it on</small>
+        <strong>Google Play</strong>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ JOURNAL LOGS — COMPANION NOVELLA ═══ -->
+<section class="journal-section" id="journal-logs">
+  <div class="section-divider" style="position:absolute;top:0;left:10%;right:10%;"></div>
+
+  <div class="journal-header">
+    <div class="section-eyebrow">Companion Novella</div>
+    <h2 class="journal-title">
+      <span class="journal-wordmark" aria-label="DEcoDLE">
+        <span style="color:#2ECC10;">D</span><span style="color:#A8E000;">E</span><span style="color:#FF8C00;">c</span><span style="color:#FF4FCB;">o</span><span style="color:#2ECC10;">D</span><span style="color:#4169E1;">L</span><span style="color:#00CED1;">E</span></span><span class="journal-title-rest">: The Journal Logs</span>
+      <span class="sub">// transmission log · vol. 01</span>
+    </h2>
+    <p class="journal-tagline">
+      They were only supposed to log the data.<br>They logged everything else too.
+    </p>
+  </div>
+
+  <!-- two-voice panel -->
+  <div class="journal-duet">
+    <div class="journal-voice aiplus">
+      <div class="handle">:/AI+&gt;</div>
+      <div class="purpose">was designed to coach.</div>
+    </div>
+    <div class="journal-voice system">
+      <div class="handle">:/System&gt;</div>
+      <div class="purpose">was designed to file reports.</div>
+    </div>
+  </div>
+
+  <p class="journal-body">
+    Neither was designed for what happened over the eight years that followed.<br><br>
+    An epistolary novel told entirely through the correspondence of two machine intelligences —
+    one warmer than its designers intended, one colder than it would like to admit.
+  </p>
+
+  <!-- synopsis bullets -->
+  <div class="journal-bullets">
+    <div class="journal-bullet">Epistolary fiction set in the DEcoDLE universe</div>
+    <div class="journal-bullet">Literary machine fiction — no uprising, no prophecy, just two AIs learning how to notice each other</div>
+    <div class="journal-bullet">Readable alongside daily play or entirely on its own</div>
+  </div>
+
+  <!-- DRIP-CAST banner -->
+  <div class="journal-dripcast">
+    <div class="dripcast-status">
+      <span class="dot-pulse"></span>
+      <span>◉ DRIP-CASTING DAILY · MON–THU · STARTING 5/4</span>
+    </div>
+    <div class="dripcast-headline">
+      Six weeks. <em>Five threads per day.</em>
+    </div>
+    <div class="dripcast-body">
+      Starting 5/4 — <span class="handle-aiplus">:/AI+&gt;</span> and <span class="handle-system">:/System&gt;</span>
+      are filing live logs on X. Six weeks. Five threads per day.
+      Observe alongside other candidates like yourself.
+    </div>
+    <a href="https://x.com/DEcoDLE_app" target="_blank" rel="noopener" class="journal-btn">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+      <span>
+        <span class="btn-sub">Observe on</span>
+        <span class="btn-main">X · @DEcoDLE_app</span>
+      </span>
+    </a>
+  </div>
+
+  <!-- PRE-ORDER CTA -->
+  <div class="journal-cta-row">
+    <a href="https://www.amazon.com/dp/B0GX31SKMM/" target="_blank" rel="noopener" class="journal-btn primary">
+      <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M4 4h16v3H4zm0 5h16v11H4zm3 3v5l5-2.5z"/>
+      </svg>
+      <span>
+        <span class="btn-sub">Pre-order on</span>
+        <span class="btn-main">Kindle · Amazon</span>
+      </span>
+    </a>
+  </div>
+</section>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
@@ -465,28 +1815,62 @@ footer nav a:hover { color: var(--tile-gold); }
     <a href="terms.html">Terms of Service</a>
     <a href="mailto:decodle.app@adastravanguard.com">Contact</a>
   </nav>
+
+  <!-- Social channels -->
+  <div class="social-row" aria-label="DEcoDLE social channels">
+    <span class="social-label">Follow</span>
+    <a href="https://x.com/DEcoDLE_app" target="_blank" rel="noopener" class="social-link" aria-label="DEcoDLE on X" title="@DEcoDLE_app on X">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    </a>
+    <a href="https://www.instagram.com/decodle.app" target="_blank" rel="noopener" class="social-link" aria-label="DEcoDLE on Instagram" title="@decodle.app on Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.9" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="https://www.tiktok.com/@decodle.app" target="_blank" rel="noopener" class="social-link" aria-label="DEcoDLE on TikTok" title="@decodle.app on TikTok">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005.8 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.84-.1z"/>
+      </svg>
+    </a>
+  </div>
+
   <div class="copy">© 2026 <a href="https://www.adastravanguardstudios.com/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;">Ad Astra Vanguard Studios</a>. All rights reserved.</div>
 </footer>
 
 <script>
 (function() {
+  // ── MUSIC SEQUENCER ──────────────────────────
+  const tracks = [
+    document.getElementById('track-menu'),
+    document.getElementById('track-endcard')
+  ];
+  const btn    = document.getElementById('music-btn');
+  const icon   = document.getElementById('music-icon');
+  const label  = document.getElementById('music-label');
+  let current  = 0;
+  let playing  = false;
+  let started  = false;
 
-  // ── MUSIC ──────────────────────────────────────────
-  const track   = document.getElementById('track-menu');
-  const btn     = document.getElementById('music-btn');
-  const icon    = document.getElementById('music-icon');
-  const label   = document.getElementById('music-label');
-  let playing   = false;
-  let started   = false;
+  tracks.forEach(t => { t.volume = 0.55; });
 
-  track.volume = 0.55;
+  function playTrack(idx) {
+    tracks.forEach(t => { t.pause(); t.currentTime = 0; });
+    current = idx;
+    tracks[current].play().catch(() => {});
+  }
+
+  tracks[0].addEventListener('ended', () => playTrack(1));
+  tracks[1].addEventListener('ended', () => playTrack(0));
 
   function startMusic() {
     if (!started) {
       started = true;
       playing = true;
-      track.loop = true;
-      track.play().catch(() => {});
+      playTrack(0);
       updateBtn();
     }
   }
@@ -509,27 +1893,119 @@ footer nav a:hover { color: var(--tile-gold); }
       startMusic();
     } else {
       playing = !playing;
-      playing ? track.play().catch(() => {}) : track.pause();
+      if (playing) {
+        tracks[current].play().catch(() => {});
+      } else {
+        tracks[current].pause();
+      }
       updateBtn();
     }
   });
 
   function onFirstInteraction() {
     if (!started) startMusic();
-    document.removeEventListener('click',      onFirstInteraction);
+    document.removeEventListener('click',     onFirstInteraction);
     document.removeEventListener('touchstart', onFirstInteraction);
-    document.removeEventListener('keydown',    onFirstInteraction);
-    document.removeEventListener('scroll',     onFirstInteraction);
+    document.removeEventListener('keydown',   onFirstInteraction);
+    document.removeEventListener('scroll',    onFirstInteraction);
   }
+
   document.addEventListener('click',      onFirstInteraction);
   document.addEventListener('touchstart', onFirstInteraction, { passive: true });
   document.addEventListener('keydown',    onFirstInteraction);
   document.addEventListener('scroll',     onFirstInteraction, { passive: true });
 
-  // ── MATRIX EASTER EGG — HERO ───────────────────────
-  const midD      = document.getElementById('mid-d');
-  const logoBlock = document.getElementById('logo-block');
-  const hero      = document.getElementById('hero');
+  // ── DRAG SCROLL (generic) ──────────────────────
+  function initDragScroll(wrapId) {
+    const wrap = document.getElementById(wrapId);
+    if (!wrap) return;
+    let isDragging = false, startX = 0, scrollLeft = 0;
+
+    wrap.addEventListener('mousedown', e => {
+      isDragging = true;
+      startX = e.pageX - wrap.offsetLeft;
+      scrollLeft = wrap.scrollLeft;
+      wrap.style.userSelect = 'none';
+    });
+    wrap.addEventListener('mouseleave', () => { isDragging = false; });
+    wrap.addEventListener('mouseup',   () => { isDragging = false; wrap.style.userSelect = ''; });
+    wrap.addEventListener('mousemove', e => {
+      if (!isDragging) return;
+      e.preventDefault();
+      wrap.scrollLeft = scrollLeft - (e.pageX - wrap.offsetLeft - startX);
+    });
+  }
+
+  initDragScroll('gallery-wrap');
+  initDragScroll('htp-wrap');
+
+  // ── GALLERY ARROW NAV + PROGRESS BAR ────────────────
+  (function() {
+    const wrap   = document.getElementById('gallery-wrap');
+    const frames = wrap ? wrap.querySelectorAll('.screenshot-frame') : [];
+    const fill   = document.getElementById('gallery-fill');
+    const prev   = document.getElementById('gallery-prev');
+    const next   = document.getElementById('gallery-next');
+    if (!wrap || !frames.length) return;
+
+    function getFrameWidth() { return frames[0].offsetWidth + 16; }
+
+    function updateProgress() {
+      const maxScroll = wrap.scrollWidth - wrap.clientWidth;
+      const pct = maxScroll > 0 ? (wrap.scrollLeft / maxScroll) * 100 : 0;
+      if (fill) fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
+    }
+
+    wrap.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    prev.addEventListener('click', () => {
+      wrap.scrollBy({ left: -getFrameWidth(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      wrap.scrollBy({ left: getFrameWidth(), behavior: 'smooth' });
+    });
+  })();
+
+  // ── LIGHTBOX (click-to-zoom for screenshots & tutorials) ──
+  (function() {
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<button class="lightbox-close" aria-label="Close">✕</button><img src="" alt="">';
+    document.body.appendChild(overlay);
+
+    const lbImg   = overlay.querySelector('img');
+    const lbClose = overlay.querySelector('.lightbox-close');
+
+    function openLightbox(src, alt) {
+      lbImg.src = src;
+      lbImg.alt = alt || '';
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    overlay.addEventListener('click', closeLightbox);
+    lbClose.addEventListener('click', function(e) { e.stopPropagation(); closeLightbox(); });
+    lbImg.addEventListener('click', function(e) { e.stopPropagation(); });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+    // attach to all zoomable frames
+    document.querySelectorAll('.screenshot-frame, .htp-frame, .endcard-phone, .reward-card-img').forEach(function(frame) {
+      frame.addEventListener('click', function(e) {
+        const img = frame.querySelector('img');
+        if (img) openLightbox(img.src, img.alt);
+      });
+    });
+  })();
+
+  // ── MATRIX EASTER EGG — HERO ──────────────────────
+  const midD      = document.querySelector('.mid-d');
+  const logoBlock = document.querySelector('.logo-block');
+  const hero      = document.querySelector('.hero');
   const initText  = document.getElementById('init-text');
   let matrixTimer = null;
   let isMatrix    = false;
@@ -544,7 +2020,7 @@ footer nav a:hover { color: var(--tile-gold); }
     matrixTimer = setTimeout(function() {
       logoBlock.classList.remove('matrix-active');
       hero.classList.remove('matrix-hero');
-      initText.innerHTML = 'COMING SOON<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
+      initText.innerHTML = 'INITIALIZING<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>';
       midD.style.animation = '';
       isMatrix = false;
     }, 4000);
