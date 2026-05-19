@@ -1,0 +1,34 @@
+# DEcoDLE
+
+> A daily word puzzle that gates every guess behind a rhythm round. Players clear an Acoustic Cypher — a beat-matching round on a radial symbol dial — to earn each guess attempt. Released April 24, 2026 on iOS and Android by Ad Astra Vanguard Studios LLC. Free with optional $2.99 PRO upgrade.
+
+DEcoDLE is the first release from Ad Astra Vanguard Studios. The patent-pending Pinwheel + Cypher mechanic (USPTO provisional filings #64/037,214 and #64/061,463, both 2026) combines a Wordle-style five-position deduction puzzle with a rhythm gate. Eight-symbol alphabet, five-position hidden sequence, up to six guess attempts. Three modes (Daily, Endless, Challenge) and three difficulty tiers (Casual, Hard, Expert). The top in-game grade — FLAWLESS.EXE — is reachable only through a perfect-timing run.
+
+## Game
+
+- [Official site](https://decodle.app): Mechanics, screenshots, modes, PRO upgrade, companion novella.
+- [App Store (iOS)](https://apps.apple.com/us/app/decodle/id6762175972): Universal iPhone + iPad app.
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=com.kallogic.decodle): Android version.
+- [Challenge code redeemer](https://decodle.app/challenge/): Open a DC-#### challenge code shared by another player.
+- [Privacy policy](https://decodle.app/privacy.html)
+- [Terms of service](https://decodle.app/terms.html)
+
+## Studio
+
+- [Ad Astra Vanguard Studios LLC](https://adastravanguardstudios.com): California-based indie game studio, founded 2026 by Christian Bowers.
+- Press contact: admin@adastravanguardstudios.com
+
+## Companion novella
+
+- [DEcoDLE: The Journal Logs (Kindle)](https://www.amazon.com/dp/B0GX31SKMM/): Epistolary novel set in the DEcoDLE universe — a correspondence between two in-game AI characters, :/AI+> and :/System>. Releases June 12, 2026.
+- [@DEcoDLE_app on X](https://x.com/DEcoDLE_app): Duolog drip-cast — six-week serialized rollout of the novella, Monday–Thursday, five threads per day, May 4 – June 11, 2026.
+
+## Social
+
+- X: https://x.com/DEcoDLE_app
+- Instagram: https://www.instagram.com/decodle.app
+- TikTok: https://www.tiktok.com/@decodle.app
+
+## Optional
+
+- [llms-full.txt](https://decodle.app/llms-full.txt): Longer machine-readable corpus — full mechanic explainer, mode and difficulty tables, grade system, patent filings, transmedia campaign details.

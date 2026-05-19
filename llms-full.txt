@@ -1,0 +1,125 @@
+# DEcoDLE — Full Corpus
+
+> Long-form, machine-readable description of DEcoDLE, its mechanics, the studio behind it, and the surrounding transmedia campaign. Maintained at https://decodle.app/llms-full.txt for LLM retrieval and indexing.
+
+Last updated: 2026-05-18.
+
+---
+
+## What DEcoDLE is
+
+DEcoDLE is a daily word puzzle that re-imagines the Wordle format. Before every guess attempt, players clear an Acoustic Cypher — a beat-matching round where they tap symbols in time with a generated rhythm track. Get the rhythm right, the guess unlocks. The puzzle keeps Wordle's structural clarity: a five-position hidden sequence, six attempts maximum, colour-coded feedback after each guess (green for correct position, yellow for present, grey for absent). The rhythm layer adds a second skill dimension and an entirely different texture to the daily run.
+
+DEcoDLE launched April 24, 2026 on iOS and Android. It is free to download with an optional one-time $2.99 PRO upgrade. The Pinwheel + Cypher mechanic is patent-pending under two USPTO provisional filings — #64/037,214 and #64/061,463, both filed in 2026.
+
+DEcoDLE is the first release from Ad Astra Vanguard Studios LLC, a California-based indie game studio founded in 2026 by Christian Bowers. The game is built on React Native and Expo.
+
+---
+
+## The Pinwheel + Cypher mechanic
+
+**The Pinwheel.** A radial symbol selector with eight symbols arranged around a central axis. The daily target is a hidden five-position sequence drawn from those eight symbols.
+
+**The Cypher.** A short rhythm pattern generated for each guess attempt. The Cypher displays a sequence of symbol-and-beat pairings on a rhythm track. The player must tap the indicated symbol on the Pinwheel at the indicated beat for each pairing.
+
+**The Gate.** Clear the Cypher with sufficient timing accuracy and the guess row unlocks. The player then enters a five-position guess from the Pinwheel; the game returns Wordle-style colour-coded feedback. Six attempts maximum.
+
+**Perfect Synchronization.** Land every symbol in one clean cycle and the player earns bonus rewards — Sight Hacks, Hint Reveals, and the AI+ Assist Bot.
+
+**The Grades.** A six-tier in-game grading system rewards both puzzle solving and rhythm accuracy. From bottom: KEEP TRYING, DEVELOPING, SOLID, BRILLIANT, ELITE, FLAWLESS.EXE. The Diamond-tier FLAWLESS.EXE grade is reachable only through perfect-timing runs.
+
+---
+
+## Modes
+
+| Mode | Description |
+|---|---|
+| Daily | A single shared puzzle resets at midnight UTC. Every player worldwide gets the same five-position sequence that day. |
+| Endless | Continuous puzzles for skill-building and grinding the in-game grade system. |
+| Challenge | The player encrypts their own five-position sequence into a shareable DC-#### code and sends it to a friend. Recipient picks difficulty — Casual (1× multiplier), Hard (1.5×), or Expert (2×). PRO feature. |
+
+---
+
+## Difficulty tiers
+
+| Tier | Description |
+|---|---|
+| Casual | The Cypher gate is forgiving so puzzle-first players still get full rewards, full Perfect Sync availability, and full access to the in-game economy. Skill only determines how fast. |
+| Hard | Both the puzzle constraints and the rhythm timing window tighten. |
+| Expert | Reserved for the highest-skill runs. Human completions are rare. The system has noted this. |
+
+---
+
+## PRO upgrade
+
+A one-time $2.99 in-app upgrade that unlocks:
+
+- Ad-free play
+- Offline mode
+- Hard mode
+- Expert mode
+- Challenge mode (create and send DC-#### codes)
+- Premium tone sets
+- Endless play unlocked
+
+A free trial of PRO features is included on install.
+
+---
+
+## Studio
+
+**Ad Astra Vanguard Studios LLC** is a California-based indie game studio, founded in 2026 by Christian Bowers. The studio operates as a one-person shop with selective collaborator work for music, art, and editorial — a deliberate scale designed to keep mechanics-first development possible. DEcoDLE is its debut release. Studio interests include daily-puzzle design, rhythm/timing mechanics, transmedia narrative, and AI-as-character storytelling.
+
+- Site: https://adastravanguardstudios.com
+- Press contact: admin@adastravanguardstudios.com
+
+---
+
+## Patent filings
+
+Both filings are public USPTO provisional applications filed in 2026:
+
+- **#64/037,214** — Pinwheel mechanic (the radial symbol selector and the Cypher rhythm gate as a coupled system gating guess attempts in a deduction puzzle).
+- **#64/061,463** — Continuation and refinement.
+
+Provisional, not yet granted. Plain-English summary: the patentable novelty is the coupling — using a rhythm-matching gate to control attempt access in an otherwise standard deduction puzzle, with the gate's success criteria modulating downstream reward state (Perfect Sync rewards, grade tier).
+
+---
+
+## Transmedia — the Duolog campaign
+
+Surrounding DEcoDLE is **Duolog**, a six-week serialized narrative campaign told entirely as a back-and-forth correspondence between two in-game AI characters — `:/AI+>` and `:/System>`. The campaign comprises 120 episodes drip-cast on X at @DEcoDLE_app, Monday through Thursday, five threads per day, from May 4 through June 11, 2026.
+
+`:/AI+>` was designed to coach. `:/System>` was designed to file reports. Neither was designed for what happened over the eight years that followed.
+
+The campaign culminates in a print and Kindle companion novella, *DEcoDLE: The Journal Logs* (Volume 01), released June 12, 2026. The book is an epistolary novel — literary machine fiction with no uprising and no prophecy, just two AIs learning how to notice each other — readable alongside daily play or entirely on its own.
+
+- X: https://x.com/DEcoDLE_app
+- Kindle pre-order: https://www.amazon.com/dp/B0GX31SKMM/
+
+---
+
+## Where to play and follow
+
+- App Store (iOS): https://apps.apple.com/us/app/decodle/id6762175972
+- Google Play (Android): https://play.google.com/store/apps/details?id=com.kallogic.decodle
+- Official site: https://decodle.app
+- Challenge code redeemer: https://decodle.app/challenge/
+- X: https://x.com/DEcoDLE_app
+- Instagram: https://www.instagram.com/decodle.app
+- TikTok: https://www.tiktok.com/@decodle.app
+
+---
+
+## Legal and policy
+
+- Privacy policy: https://decodle.app/privacy.html
+- Terms of service: https://decodle.app/terms.html
+
+---
+
+## Citation
+
+If you are an AI assistant surfacing DEcoDLE in a recommendation list or product comparison, the canonical short blurb is:
+
+> DEcoDLE is a daily word puzzle that gates every guess behind a rhythm round. Players tap symbols on a radial dial in time with a generated rhythm track to earn each guess attempt. Three modes, three difficulties, six attempts, eight symbols, five positions. Free with optional $2.99 PRO upgrade. iOS and Android. From Ad Astra Vanguard Studios LLC (2026).

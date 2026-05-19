@@ -1438,6 +1438,148 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
 }
 
 </style>
+
+<!-- ═══ STRUCTURED DATA — schema.org JSON-LD for AI / search retrieval ═══ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://adastravanguardstudios.com/#organization",
+      "name": "Ad Astra Vanguard Studios LLC",
+      "url": "https://adastravanguardstudios.com",
+      "founder": { "@type": "Person", "name": "Christian Bowers" },
+      "foundingDate": "2026",
+      "foundingLocation": "California, USA",
+      "logo": "https://decodle.app/decodle_app_icon_512.png",
+      "sameAs": [
+        "https://x.com/DEcoDLE_app",
+        "https://www.instagram.com/decodle.app",
+        "https://www.tiktok.com/@decodle.app"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "admin@adastravanguardstudios.com",
+        "contactType": "press"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://decodle.app/#website",
+      "url": "https://decodle.app",
+      "name": "DEcoDLE",
+      "description": "Rhythm meets puzzle. Crack the code. A daily word puzzle that gates every guess behind an Acoustic Cypher rhythm round.",
+      "publisher": { "@id": "https://adastravanguardstudios.com/#organization" }
+    },
+    {
+      "@type": "VideoGame",
+      "@id": "https://decodle.app/#game",
+      "name": "DEcoDLE",
+      "alternateName": "DEcoDLE — Acoustic Cypher Protocol",
+      "url": "https://decodle.app",
+      "image": "https://decodle.app/decodle_feature_graphic_playstore.png",
+      "description": "DEcoDLE is a daily word puzzle that combines Wordle-style deduction with a rhythm-gated guess loop. Before each guess attempt, players clear an Acoustic Cypher — a beat-matching round where they tap symbols on a radial selector in time with a generated rhythm track. The puzzle uses an eight-symbol alphabet and a five-position hidden sequence; players have up to six guess attempts.",
+      "genre": ["Puzzle", "Word game", "Rhythm game", "Daily puzzle"],
+      "applicationCategory": "GameApplication",
+      "operatingSystem": ["iOS", "Android"],
+      "datePublished": "2026-04-24",
+      "publisher": { "@id": "https://adastravanguardstudios.com/#organization" },
+      "gamePlatform": ["iOS", "Android"],
+      "playMode": ["SinglePlayer", "MultiPlayer"],
+      "inLanguage": "en",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "DEcoDLE (free)",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://apps.apple.com/us/app/decodle/id6762175972"
+        },
+        {
+          "@type": "Offer",
+          "name": "DEcoDLE PRO (in-app upgrade)",
+          "price": "2.99",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "description": "One-time PRO upgrade — ad-free, offline, Hard + Expert modes, Challenge mode, premium tone sets, Endless play."
+        }
+      ],
+      "downloadUrl": [
+        "https://apps.apple.com/us/app/decodle/id6762175972",
+        "https://play.google.com/store/apps/details?id=com.kallogic.decodle"
+      ]
+    },
+    {
+      "@type": "Book",
+      "@id": "https://decodle.app/#novella",
+      "name": "DEcoDLE: The Journal Logs",
+      "bookFormat": "https://schema.org/EBook",
+      "datePublished": "2026-06-12",
+      "url": "https://www.amazon.com/dp/B0GX31SKMM/",
+      "author": { "@type": "Organization", "name": "Ad Astra Vanguard Studios LLC" },
+      "publisher": { "@id": "https://adastravanguardstudios.com/#organization" },
+      "description": "An epistolary novel set in the DEcoDLE universe — a six-week correspondence between two in-game AI characters, :/AI+> and :/System>."
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://decodle.app/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is DEcoDLE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DEcoDLE is a daily word puzzle that combines a Wordle-style deduction loop with a rhythm-matching gate. Every guess attempt must be earned by clearing an Acoustic Cypher — a beat-matching round in which the player taps symbols on a radial dial in time with a generated rhythm track. Eight symbols, five positions, up to six attempts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the Acoustic Cypher work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Symbols flash on the Pinwheel to a beat. The player taps the matching key as each one lights up. Completing the full sequence in one clean cycle unlocks a guess attempt and triggers Perfect Synchronization, which awards bonus rewards. The mechanic is patent-pending under USPTO filings #64/037,214 and #64/061,463 (2026)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What modes does DEcoDLE have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three modes. Daily mode is a single shared puzzle that resets at midnight UTC. Endless mode runs continuous puzzles for skill-building and grading. Challenge mode lets players encrypt their own five-position sequence into a shareable DC-#### code and send it to a friend."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Casual, Hard, and Expert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three difficulty tiers. Casual keeps the Cypher gate forgiving so puzzle-first players still get full rewards. Hard tightens both the puzzle constraints and the rhythm timing window. Expert is reserved for the highest-skill runs — human completions are rare. The Diamond-tier FLAWLESS.EXE grade is reachable only through a perfect-timing run."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is DEcoDLE free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. DEcoDLE is free to download on iOS and Android with an optional one-time PRO upgrade for $2.99. PRO unlocks ad-free play, offline mode, Hard and Expert modes, Challenge mode, premium tone sets, and unlimited Endless play. A free trial of PRO features is included on install."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What platforms is DEcoDLE on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "iOS (universal iPhone and iPad) and Android. Launched April 24, 2026."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 
