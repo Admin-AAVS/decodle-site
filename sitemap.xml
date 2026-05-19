@@ -13,6 +13,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://decodle.app/press/</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://decodle.app/privacy.html</loc>
     <lastmod>2026-04-13</lastmod>
     <changefreq>yearly</changefreq>
