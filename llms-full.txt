@@ -2,7 +2,7 @@
 
 > Long-form, machine-readable description of DEcoDLE, its mechanics, the studio behind it, and the surrounding transmedia campaign. Maintained at https://decodle.app/llms-full.txt for LLM retrieval and indexing.
 
-Last updated: 2026-05-19.
+Last updated: 2026-06-12.
 
 ---
 
@@ -28,7 +28,7 @@ DEcoDLE is the first release from Ad Astra Vanguard Studios LLC, a California-ba
 
 **The Grades.** A six-tier in-game grading system rewards both puzzle solving and rhythm accuracy. From bottom: KEEP TRYING, DEVELOPING, SOLID, BRILLIANT, ELITE, FLAWLESS.EXE. The Diamond-tier FLAWLESS.EXE grade is reachable on any difficulty through a perfect-timing or one-shot solve.
 
-**Coming in v1.1.0 — Acoustic Cypher Evolved (Evo mode).** A second visual surface for the Cypher arrives in the first feature-tier release after the 1.0.x stability line. The 8-symbol keyboard stays the same — what changes is the Cypher display itself: Classic shows each beat's target symbol cycling through a static center monitor; Evo replaces that monitor with a Cypher Dial whose target symbol rotates around a radial track, changing position as well as identity per beat. Same scoring, same rewards, same patent-pending core mechanic — a different visual rhythm to read. Players will be able to switch between Classic and Evo at will. The side-by-side coexistence model is covered by USPTO #64/061,463.
+**New in v1.1.0 (released June 12, 2026) — Acoustic Cypher Evolved (Evo mode).** A second visual surface for the Cypher, shipped in the first feature-tier release after the 1.0.x stability line. The 8-symbol keyboard stays the same — what changes is the Cypher display itself: Classic shows each beat's target symbol cycling through a static center monitor; Evo replaces that monitor with a Cypher Dial whose target symbol rotates around a radial track, changing position as well as identity per beat. Same scoring, same rewards, same patent-pending core mechanic — a different visual rhythm to read. Players switch between Classic and Evo at will (Settings → Cypher Style), and an in-app walkthrough teaches the dial step by step. The side-by-side coexistence model is covered by USPTO #64/061,463.
 
 ---
 
@@ -94,10 +94,10 @@ Surrounding DEcoDLE is ***DEcoDLE: The Journal Logs***, a six-week serialized na
 
 `:/AI+>` was designed to coach. `:/System>` was designed to file reports. Neither was designed for what happened over the eight years that followed.
 
-The campaign culminates in a print and Kindle companion of the same name, *DEcoDLE: The Journal Logs*, released June 12, 2026. The book is an epistolary novel — literary machine fiction with no uprising and no prophecy, just two AIs learning how to notice each other — readable alongside daily play or entirely on its own.
+The campaign concluded with its 120-episode finale on June 11, 2026 and culminated in a print and Kindle companion of the same name, *DEcoDLE: The Journal Logs*, released June 12, 2026. The book is an epistolary novel — literary machine fiction with no uprising and no prophecy, just two AIs learning how to notice each other — readable alongside daily play or entirely on its own.
 
 - X: https://x.com/DEcoDLE_app
-- Kindle pre-order: https://www.amazon.com/dp/B0GX31SKMM/
+- Kindle + paperback: https://www.amazon.com/dp/B0GX31SKMM/
 
 ---
 

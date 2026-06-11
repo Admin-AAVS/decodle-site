@@ -2,7 +2,7 @@
 
 > A daily puzzle / rhythm hybrid that gates every guess behind a rhythm round. Players clear an Acoustic Cypher — a beat-matching round on an eight-symbol keyboard — to earn each guess attempt. Released April 24, 2026 on iOS and Android by Ad Astra Vanguard Studios LLC. Free with optional $2.99 PRO upgrade.
 
-DEcoDLE is the first release from Ad Astra Vanguard Studios. The patent-pending Acoustic Cypher mechanic (USPTO provisional filings #64/037,214 base mechanic, #64/061,463 Classic+Evo coexistence model, both 2026) combines a Wordle-style five-symbol deduction puzzle with a rhythm gate. Eight-symbol alphabet, five-symbol hidden sequence drawn from those eight, up to six Puzzleboard rows per run. Cypher attempts themselves are unlimited; only the bonus Power-Up rewards depend on a clean run. Three modes (Daily, Endless, Challenge) and three difficulty tiers (Casual, Hard, Expert). The top in-game grade — FLAWLESS.EXE — is reachable on any difficulty through a perfect-timing or one-shot solve. A v1.1.0 update will add Acoustic Cypher Evolved (Evo) — a radial Cypher Dial visual alternate to the static center monitor — as a player-selectable mode.
+DEcoDLE is the first release from Ad Astra Vanguard Studios. The patent-pending Acoustic Cypher mechanic (USPTO provisional filings #64/037,214 base mechanic, #64/061,463 Classic+Evo coexistence model, both 2026) combines a Wordle-style five-symbol deduction puzzle with a rhythm gate. Eight-symbol alphabet, five-symbol hidden sequence drawn from those eight, up to six Puzzleboard rows per run. Cypher attempts themselves are unlimited; only the bonus Power-Up rewards depend on a clean run. Three modes (Daily, Endless, Challenge) and three difficulty tiers (Casual, Hard, Expert). The top in-game grade — FLAWLESS.EXE — is reachable on any difficulty through a perfect-timing or one-shot solve. v1.1.0 (released June 12, 2026) added Acoustic Cypher Evolved (Evo) — a radial Cypher Dial visual alternate to the static center monitor — as a player-selectable style (Settings → Cypher Style), with identical scoring and rewards in both.
 
 ## Game
 
@@ -21,8 +21,8 @@ DEcoDLE is the first release from Ad Astra Vanguard Studios. The patent-pending 
 
 ## Companion novella
 
-- [DEcoDLE: The Journal Logs (Kindle)](https://www.amazon.com/dp/B0GX31SKMM/): Epistolary novel set in the DEcoDLE universe — a correspondence between two in-game AI characters, :/AI+> and :/System>. Releases June 12, 2026.
-- [@DEcoDLE_app on X](https://x.com/DEcoDLE_app): Six-week serialized drip-cast of the novella, Monday–Thursday, five threads per day, May 4 – June 11, 2026.
+- [DEcoDLE: The Journal Logs (Kindle + paperback)](https://www.amazon.com/dp/B0GX31SKMM/): Epistolary novel set in the DEcoDLE universe — a correspondence between two in-game AI characters, :/AI+> and :/System>. Released June 12, 2026.
+- [@DEcoDLE_app on X](https://x.com/DEcoDLE_app): Six-week serialized drip-cast of the novella, Monday–Thursday, five threads per day, May 4 – June 11, 2026 (complete).
 
 ## Social
 
