@@ -589,6 +589,61 @@ body {
   opacity: 0.8;
 }
 
+/* ─── CHOOSE YOUR CYPHER STYLE (v1.1.0 comparison) ─── */
+.cypher-styles { width: 100%; }
+.cypher-styles-head {
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1.3rem, 3.2vw, 1.9rem);
+  letter-spacing: 0.12em;
+  color: var(--tile-warm);
+  margin: 0 0 2.6rem;
+}
+.cypher-styles-head::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 0.9rem auto 0;
+  background: var(--phosphor);
+  box-shadow: 0 0 10px var(--phosphor-glow);
+  opacity: 0.7;
+}
+.cypher-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  width: 100%;
+  align-items: start;
+}
+.cypher-card { display: flex; align-items: center; gap: 1.5rem; }
+.cypher-visual { flex-shrink: 0; display: flex; justify-content: center; align-items: center; }
+.cypher-classic-shot {
+  width: 168px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,255,65,0.18);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+  background: #000;
+  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.cypher-classic-shot:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,255,65,0.45);
+  box-shadow: 0 18px 52px rgba(0,0,0,0.65), 0 0 22px rgba(0,255,65,0.12);
+}
+.cypher-classic-shot img { width: 100%; display: block; }
+.cypher-card .feature-copy { gap: 0.9rem; }
+.cypher-card .feature-desc { max-width: none; }
+
+@media (max-width: 980px) {
+  .cypher-compare { grid-template-columns: 1fr; gap: 3.5rem; max-width: 620px; margin: 0 auto; }
+}
+@media (max-width: 560px) {
+  .cypher-card { flex-direction: column; text-align: center; align-items: center; gap: 1.3rem; }
+  .cypher-card .feature-bullets { text-align: left; }
+}
+
 /* ─── REWARDS GRID ─── */
 .rewards-section {
   padding: 5rem 2rem 6rem;
@@ -1749,47 +1804,76 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
     </div>
   </div>
 
-  <div class="feature-row">
-    <div class="feature-phones" style="justify-content:center;">
-      <!-- Evo dial schematic — placeholder visual until v1.1.0 screenshots land -->
-      <svg viewBox="0 0 300 300" width="280" height="280" role="img" aria-label="Acoustic Cypher Evolved — radial Cypher Dial schematic" style="max-width:80vw;">
-        <circle cx="150" cy="150" r="120" fill="none" stroke="#003B00" stroke-width="10"/>
-        <circle cx="150" cy="150" r="120" fill="none" stroke="#00FF41" stroke-width="2" opacity="0.55"/>
-        <circle cx="150" cy="150" r="86" fill="none" stroke="#00FF41" stroke-width="1" opacity="0.18"/>
-        <g fill="#0A0F0A" stroke="#00FF41" stroke-width="2">
-          <circle cx="150" cy="30"  r="16"/>
-          <circle cx="254" cy="90"  r="16"/>
-          <circle cx="254" cy="210" r="16"/>
-          <circle cx="150" cy="270" r="16"/>
-          <circle cx="46"  cy="210" r="16"/>
-          <circle cx="46"  cy="90"  r="16"/>
-        </g>
-        <g fill="#00FF41" font-family="monospace" font-size="16" text-anchor="middle" dominant-baseline="central">
-          <text x="150" y="30">▲</text>
-          <text x="254" y="90">○</text>
-          <text x="254" y="210">★</text>
-          <text x="150" y="270">✕</text>
-          <text x="46"  y="210">#</text>
-          <text x="46"  y="90">◆</text>
-        </g>
-        <line x1="150" y1="150" x2="150" y2="52" stroke="#00FF41" stroke-width="3" stroke-linecap="round"/>
-        <circle cx="150" cy="150" r="7" fill="#00FF41"/>
-        <circle cx="150" cy="30" r="22" fill="none" stroke="#00FF41" stroke-width="1.5" opacity="0.7">
-          <animate attributeName="r" values="20;26;20" dur="1.6s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.6s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
-    </div>
-    <div class="feature-copy">
-      <div class="feature-tag">New in v1.1.0</div>
-      <h3 class="feature-title"><em>Acoustic Cypher</em><br>Evolved</h3>
-      <p class="feature-desc">A second way to read the Cypher. The static monitor becomes a rotating <strong style="color:var(--phosphor)">Cypher Dial</strong> — the target symbol sweeps a radial track, changing position as well as identity with every beat. Read the dial. Tap each notch's symbol as the pin reaches it.</p>
-      <div class="feature-bullets">
-        <div class="feature-bullet">Switch between Classic and Evo anytime — Settings → Cypher Style</div>
-        <div class="feature-bullet">Identical scoring and rewards in both styles</div>
-        <div class="feature-bullet">In-app walkthrough teaches the dial step by step</div>
-        <div class="feature-bullet">Coexistence model covered by USPTO filing #64/061,463</div>
-      </div>
+  <!-- ═══ FEATURE: CHOOSE YOUR CYPHER STYLE (v1.1.0) ═══ -->
+  <div class="cypher-styles">
+    <h3 class="cypher-styles-head">Choose Your Cypher Style</h3>
+    <div class="cypher-compare">
+
+      <!-- EVO card -->
+      <article class="cypher-card">
+        <div class="cypher-visual">
+          <!-- Evo dial schematic — placeholder visual until v1.1.0 screenshots land -->
+          <svg viewBox="0 0 300 300" width="176" height="176" role="img" aria-label="Acoustic Cypher Evolved — radial Cypher Dial schematic">
+            <circle cx="150" cy="150" r="120" fill="none" stroke="#003B00" stroke-width="10"/>
+            <circle cx="150" cy="150" r="120" fill="none" stroke="#00FF41" stroke-width="2" opacity="0.55"/>
+            <circle cx="150" cy="150" r="86" fill="none" stroke="#00FF41" stroke-width="1" opacity="0.18"/>
+            <g fill="#0A0F0A" stroke="#00FF41" stroke-width="2">
+              <circle cx="150" cy="30"  r="16"/>
+              <circle cx="254" cy="90"  r="16"/>
+              <circle cx="254" cy="210" r="16"/>
+              <circle cx="150" cy="270" r="16"/>
+              <circle cx="46"  cy="210" r="16"/>
+              <circle cx="46"  cy="90"  r="16"/>
+            </g>
+            <g fill="#00FF41" font-family="monospace" font-size="16" text-anchor="middle" dominant-baseline="central">
+              <text x="150" y="30">▲</text>
+              <text x="254" y="90">○</text>
+              <text x="254" y="210">★</text>
+              <text x="150" y="270">✕</text>
+              <text x="46"  y="210">#</text>
+              <text x="46"  y="90">◆</text>
+            </g>
+            <line x1="150" y1="150" x2="150" y2="52" stroke="#00FF41" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="150" cy="150" r="7" fill="#00FF41"/>
+            <circle cx="150" cy="30" r="22" fill="none" stroke="#00FF41" stroke-width="1.5" opacity="0.7">
+              <animate attributeName="r" values="20;26;20" dur="1.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.6s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="feature-copy">
+          <div class="feature-tag">New in v1.1.0</div>
+          <h3 class="feature-title"><em>Acoustic Cypher</em><br>Evolved</h3>
+          <p class="feature-desc">A second way to read the Cypher. The static monitor becomes a rotating <strong style="color:var(--phosphor)">Cypher Dial</strong> — the target symbol sweeps a radial track, changing position as well as identity with every beat. Read the dial. Tap each notch's symbol as the pin reaches it.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Switch between Classic and Evo anytime — Settings → Cypher Style</div>
+            <div class="feature-bullet">Identical scoring and rewards in both styles</div>
+            <div class="feature-bullet">In-app walkthrough teaches the dial step by step</div>
+            <div class="feature-bullet">Take as many cycles as you need; one clean cycle earns Perfect Sync</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CLASSIC card -->
+      <article class="cypher-card">
+        <div class="cypher-visual">
+          <div class="cypher-classic-shot">
+            <img src="decodle_classic_cypher.png" alt="Acoustic Cypher Classic — static center monitor and eight-symbol keyboard" loading="lazy">
+          </div>
+        </div>
+        <div class="feature-copy">
+          <div class="feature-tag">The Original</div>
+          <h3 class="feature-title"><em>Acoustic Cypher</em><br>Classic</h3>
+          <p class="feature-desc">The original way to read the Cypher. Symbols flash on a fixed <strong style="color:var(--phosphor)">center monitor</strong> in time with the beat. Watch the monitor, tap each symbol on the keyboard as it lights up, and clear the sequence.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Static center monitor — read it, tap it, clear it</div>
+            <div class="feature-bullet">Identical scoring and rewards in both styles</div>
+            <div class="feature-bullet">The style DEcoDLE launched with — clean and direct</div>
+            <div class="feature-bullet">Take as many cycles as you need; one clean cycle earns Perfect Sync</div>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
