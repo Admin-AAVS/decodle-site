@@ -1480,10 +1480,11 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
       "alternateName": "DEcoDLE — Acoustic Cypher Protocol",
       "url": "https://decodle.app",
       "image": "https://decodle.app/decodle_feature_graphic_playstore.png",
-      "description": "DEcoDLE is a daily puzzle / rhythm hybrid that combines Wordle-style deduction with a rhythm-gated guess loop. Before each guess attempt, players clear an Acoustic Cypher — a beat-matching round where they tap symbols on an eight-symbol keyboard in time with a generated rhythm track. The puzzle uses an eight-symbol alphabet and a five-symbol hidden sequence; players have up to six Puzzleboard rows per run. Acoustic Cypher Evolved (Evo mode) — a radial-dial alternate visual — ships in v1.1.0.",
+      "description": "DEcoDLE is a daily puzzle / rhythm hybrid that combines Wordle-style deduction with a rhythm-gated guess loop. Before each guess attempt, players clear an Acoustic Cypher — a beat-matching round where they tap symbols on an eight-symbol keyboard in time with a generated rhythm track. The puzzle uses an eight-symbol alphabet and a five-symbol hidden sequence; players have up to six Puzzleboard rows per run. Since v1.1.0 (June 12, 2026) the Cypher has two player-selectable styles: Classic (static center monitor) and Acoustic Cypher Evolved (Evo) — a radial Cypher Dial — with identical scoring and rewards in both.",
       "genre": ["Puzzle", "Word game", "Rhythm game", "Daily puzzle"],
       "applicationCategory": "GameApplication",
       "operatingSystem": ["iOS", "Android"],
+      "softwareVersion": "1.1.0",
       "datePublished": "2026-04-24",
       "publisher": { "@id": "https://adastravanguardstudios.com/#organization" },
       "gamePlatform": ["iOS", "Android"],
@@ -1516,12 +1517,24 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
       "@type": "Book",
       "@id": "https://decodle.app/#novella",
       "name": "DEcoDLE: The Journal Logs",
-      "bookFormat": "https://schema.org/EBook",
       "datePublished": "2026-06-12",
       "url": "https://www.amazon.com/dp/B0GX31SKMM/",
       "author": { "@type": "Organization", "name": "Ad Astra Vanguard Studios LLC" },
       "publisher": { "@id": "https://adastravanguardstudios.com/#organization" },
-      "description": "An epistolary novel set in the DEcoDLE universe — a six-week correspondence between two in-game AI characters, :/AI+> and :/System>."
+      "description": "An epistolary novel set in the DEcoDLE universe — a six-week correspondence between two in-game AI characters, :/AI+> and :/System>.",
+      "workExample": [
+        {
+          "@type": "Book",
+          "bookFormat": "https://schema.org/EBook",
+          "datePublished": "2026-06-12",
+          "url": "https://www.amazon.com/dp/B0GX31SKMM/"
+        },
+        {
+          "@type": "Book",
+          "bookFormat": "https://schema.org/Paperback",
+          "datePublished": "2026-06-12"
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -1540,7 +1553,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
           "name": "How does the Acoustic Cypher work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Symbols flash on a static center monitor to a beat. The player taps the matching key on the eight-symbol keyboard as each one lights up. Completing the full sequence cleanly triggers Perfect Synchronization, which awards bonus Power-Ups deployable during later rounds; players have unlimited attempts to complete the Cypher, so a sloppy run still advances the puzzle (just without the bonuses). Acoustic Cypher Evolved (Evo, v1.1.0) replaces the static monitor with a rotating Cypher Dial. The mechanic is patent-pending under USPTO filings #64/037,214 (base Acoustic Cypher) and #64/061,463 (Classic + Evo coexistence model), both 2026."
+            "text": "In the Classic style, symbols flash on a static center monitor to a beat. The player taps the matching key on the eight-symbol keyboard as each one lights up. Completing the full sequence cleanly triggers Perfect Synchronization, which awards bonus Power-Ups deployable during later rounds; players have unlimited attempts to complete the Cypher, so a sloppy run still advances the puzzle (just without the bonuses). Acoustic Cypher Evolved (Evo, added in v1.1.0) replaces the static monitor with a rotating Cypher Dial — players switch between Classic and Evo anytime in Settings, with identical scoring and rewards. The mechanic is patent-pending under USPTO filings #64/037,214 (base Acoustic Cypher) and #64/061,463 (Classic + Evo coexistence model), both 2026."
           }
         },
         {
@@ -1732,6 +1745,50 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
         <div class="feature-bullet">3 difficulty tiers: Easy multi-cycle, Hard precision, Expert survival</div>
         <div class="feature-bullet">The system is watching. It has opinions. Act accordingly.</div>
         <div class="feature-bullet">AI+ Assist Bot auto-completes a round when fully charged</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-row">
+    <div class="feature-phones" style="justify-content:center;">
+      <!-- Evo dial schematic — placeholder visual until v1.1.0 screenshots land -->
+      <svg viewBox="0 0 300 300" width="280" height="280" role="img" aria-label="Acoustic Cypher Evolved — radial Cypher Dial schematic" style="max-width:80vw;">
+        <circle cx="150" cy="150" r="120" fill="none" stroke="#003B00" stroke-width="10"/>
+        <circle cx="150" cy="150" r="120" fill="none" stroke="#00FF41" stroke-width="2" opacity="0.55"/>
+        <circle cx="150" cy="150" r="86" fill="none" stroke="#00FF41" stroke-width="1" opacity="0.18"/>
+        <g fill="#0A0F0A" stroke="#00FF41" stroke-width="2">
+          <circle cx="150" cy="30"  r="16"/>
+          <circle cx="254" cy="90"  r="16"/>
+          <circle cx="254" cy="210" r="16"/>
+          <circle cx="150" cy="270" r="16"/>
+          <circle cx="46"  cy="210" r="16"/>
+          <circle cx="46"  cy="90"  r="16"/>
+        </g>
+        <g fill="#00FF41" font-family="monospace" font-size="16" text-anchor="middle" dominant-baseline="central">
+          <text x="150" y="30">▲</text>
+          <text x="254" y="90">○</text>
+          <text x="254" y="210">★</text>
+          <text x="150" y="270">✕</text>
+          <text x="46"  y="210">#</text>
+          <text x="46"  y="90">◆</text>
+        </g>
+        <line x1="150" y1="150" x2="150" y2="52" stroke="#00FF41" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="150" cy="150" r="7" fill="#00FF41"/>
+        <circle cx="150" cy="30" r="22" fill="none" stroke="#00FF41" stroke-width="1.5" opacity="0.7">
+          <animate attributeName="r" values="20;26;20" dur="1.6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.6s" repeatCount="indefinite"/>
+        </circle>
+      </svg>
+    </div>
+    <div class="feature-copy">
+      <div class="feature-tag">New in v1.1.0</div>
+      <h3 class="feature-title"><em>Acoustic Cypher</em><br>Evolved</h3>
+      <p class="feature-desc">A second way to read the Cypher. The static monitor becomes a rotating <strong style="color:var(--phosphor)">Cypher Dial</strong> — the target symbol sweeps a radial track, changing position as well as identity with every beat. Read the dial. Tap each notch's symbol as the pin reaches it.</p>
+      <div class="feature-bullets">
+        <div class="feature-bullet">Switch between Classic and Evo anytime — Settings → Cypher Style</div>
+        <div class="feature-bullet">Identical scoring and rewards in both styles</div>
+        <div class="feature-bullet">In-app walkthrough teaches the dial step by step</div>
+        <div class="feature-bullet">Coexistence model covered by USPTO filing #64/061,463</div>
       </div>
     </div>
   </div>
