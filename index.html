@@ -618,8 +618,8 @@ body {
 }
 .cypher-card { display: flex; align-items: center; gap: 1.5rem; }
 .cypher-visual { flex-shrink: 0; display: flex; justify-content: center; align-items: center; }
-.cypher-classic-shot {
-  width: 168px;
+.cypher-shot {
+  width: 178px;
   border-radius: 14px;
   overflow: hidden;
   border: 1.5px solid rgba(0,255,65,0.18);
@@ -627,12 +627,12 @@ body {
   background: #000;
   transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
 }
-.cypher-classic-shot:hover {
+.cypher-shot:hover {
   transform: translateY(-6px);
   border-color: rgba(0,255,65,0.45);
   box-shadow: 0 18px 52px rgba(0,0,0,0.65), 0 0 22px rgba(0,255,65,0.12);
 }
-.cypher-classic-shot img { width: 100%; display: block; }
+.cypher-shot img, .cypher-shot video { width: 100%; display: block; }
 .cypher-card .feature-copy { gap: 0.9rem; }
 .cypher-card .feature-desc { max-width: none; }
 
@@ -1812,34 +1812,12 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
       <!-- EVO card -->
       <article class="cypher-card">
         <div class="cypher-visual">
-          <!-- Evo dial schematic — placeholder visual until v1.1.0 screenshots land -->
-          <svg viewBox="0 0 300 300" width="176" height="176" role="img" aria-label="Acoustic Cypher Evolved — radial Cypher Dial schematic">
-            <circle cx="150" cy="150" r="120" fill="none" stroke="#003B00" stroke-width="10"/>
-            <circle cx="150" cy="150" r="120" fill="none" stroke="#00FF41" stroke-width="2" opacity="0.55"/>
-            <circle cx="150" cy="150" r="86" fill="none" stroke="#00FF41" stroke-width="1" opacity="0.18"/>
-            <g fill="#0A0F0A" stroke="#00FF41" stroke-width="2">
-              <circle cx="150" cy="30"  r="16"/>
-              <circle cx="254" cy="90"  r="16"/>
-              <circle cx="254" cy="210" r="16"/>
-              <circle cx="150" cy="270" r="16"/>
-              <circle cx="46"  cy="210" r="16"/>
-              <circle cx="46"  cy="90"  r="16"/>
-            </g>
-            <g fill="#00FF41" font-family="monospace" font-size="16" text-anchor="middle" dominant-baseline="central">
-              <text x="150" y="30">▲</text>
-              <text x="254" y="90">○</text>
-              <text x="254" y="210">★</text>
-              <text x="150" y="270">✕</text>
-              <text x="46"  y="210">#</text>
-              <text x="46"  y="90">◆</text>
-            </g>
-            <line x1="150" y1="150" x2="150" y2="52" stroke="#00FF41" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="150" cy="150" r="7" fill="#00FF41"/>
-            <circle cx="150" cy="30" r="22" fill="none" stroke="#00FF41" stroke-width="1.5" opacity="0.7">
-              <animate attributeName="r" values="20;26;20" dur="1.6s" repeatCount="indefinite"/>
-              <animate attributeName="opacity" values="0.7;0.15;0.7" dur="1.6s" repeatCount="indefinite"/>
-            </circle>
-          </svg>
+          <div class="cypher-shot">
+            <video autoplay loop muted playsinline preload="metadata" poster="decodle_evo_cypher_poster.jpg" aria-label="Acoustic Cypher Evolved gameplay — the pin sweeps the rotating Cypher Dial">
+              <source src="decodle_evo_cypher_loop.mp4" type="video/mp4">
+              <img src="decodle_evo_cypher_poster.jpg" alt="Acoustic Cypher Evolved — rotating Cypher Dial gameplay">
+            </video>
+          </div>
         </div>
         <div class="feature-copy">
           <div class="feature-tag">New in v1.1.0</div>
@@ -1857,8 +1835,11 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
       <!-- CLASSIC card -->
       <article class="cypher-card">
         <div class="cypher-visual">
-          <div class="cypher-classic-shot">
-            <img src="decodle_classic_cypher.png" alt="Acoustic Cypher Classic — static center monitor and eight-symbol keyboard" loading="lazy">
+          <div class="cypher-shot">
+            <video autoplay loop muted playsinline preload="metadata" poster="decodle_classic_cypher_poster.jpg" aria-label="Acoustic Cypher Classic gameplay — symbols flash on the static center monitor">
+              <source src="decodle_classic_cypher_loop.mp4" type="video/mp4">
+              <img src="decodle_classic_cypher_poster.jpg" alt="Acoustic Cypher Classic — static center monitor and eight-symbol keyboard">
+            </video>
           </div>
         </div>
         <div class="feature-copy">
@@ -1901,7 +1882,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
 
     <div class="reward-card">
       <div class="reward-card-img">
-        <img src="decodle_ios_09_rewards_1320x2868.png" alt="Perfect Sync reward selection screen">
+        <img src="decodle_rewards_v110_1290x2796.png" alt="Perfect Sync reward selection screen">
       </div>
       <div class="reward-card-body">
         <div class="reward-card-tag">Reward Select</div>
@@ -1918,7 +1899,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
   <div class="feature-row">
     <div class="feature-phones" style="justify-content:center;">
       <div class="feature-phone tall">
-        <img src="decodle_ios_02_difficulty_1320x2868.png" alt="Difficulty select screen — Casual, Hard, Expert">
+        <img src="decodle_select_v110_1290x2796.jpg" alt="Select screen — Classic/Evo style toggle and Casual, Hard, Expert tiers">
       </div>
     </div>
     <div class="feature-copy">
@@ -1948,7 +1929,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
         <div class="screenshot-caption">Tap to Begin</div>
       </div>
       <div class="screenshot-frame">
-        <img src="decodle_ios_02_difficulty_1320x2868.png" alt="Difficulty select">
+        <img src="decodle_select_v110_1290x2796.jpg" alt="Select screen — style toggle and difficulty tiers">
         <div class="screenshot-caption">Select Mode</div>
       </div>
       <div class="screenshot-frame">
@@ -1976,7 +1957,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
         <div class="screenshot-caption">End Card</div>
       </div>
       <div class="screenshot-frame">
-        <img src="decodle_ios_09_rewards_1320x2868.png" alt="Perfect Sync rewards">
+        <img src="decodle_rewards_v110_1290x2796.png" alt="Perfect Sync rewards">
         <div class="screenshot-caption">Sync Rewards</div>
       </div>
       <div class="screenshot-frame">
