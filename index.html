@@ -589,6 +589,61 @@ body {
   opacity: 0.8;
 }
 
+/* ─── CHOOSE YOUR CYPHER STYLE (v1.1.0 comparison) ─── */
+.cypher-styles { width: 100%; }
+.cypher-styles-head {
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: clamp(1.3rem, 3.2vw, 1.9rem);
+  letter-spacing: 0.12em;
+  color: var(--tile-warm);
+  margin: 0 0 2.6rem;
+}
+.cypher-styles-head::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 2px;
+  margin: 0.9rem auto 0;
+  background: var(--phosphor);
+  box-shadow: 0 0 10px var(--phosphor-glow);
+  opacity: 0.7;
+}
+.cypher-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  width: 100%;
+  align-items: start;
+}
+.cypher-card { display: flex; align-items: center; gap: 1.5rem; }
+.cypher-visual { flex-shrink: 0; display: flex; justify-content: center; align-items: center; }
+.cypher-shot {
+  width: 178px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(0,255,65,0.18);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+  background: #000;
+  transition: transform 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+.cypher-shot:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,255,65,0.45);
+  box-shadow: 0 18px 52px rgba(0,0,0,0.65), 0 0 22px rgba(0,255,65,0.12);
+}
+.cypher-shot img, .cypher-shot video { width: 100%; display: block; }
+.cypher-card .feature-copy { gap: 0.9rem; }
+.cypher-card .feature-desc { max-width: none; }
+
+@media (max-width: 980px) {
+  .cypher-compare { grid-template-columns: 1fr; gap: 3.5rem; max-width: 620px; margin: 0 auto; }
+}
+@media (max-width: 560px) {
+  .cypher-card { flex-direction: column; text-align: center; align-items: center; gap: 1.3rem; }
+  .cypher-card .feature-bullets { text-align: left; }
+}
+
 /* ─── REWARDS GRID ─── */
 .rewards-section {
   padding: 5rem 2rem 6rem;
@@ -1479,10 +1534,11 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
       "alternateName": "DEcoDLE — Acoustic Cypher Protocol",
       "url": "https://decodle.app",
       "image": "https://decodle.app/decodle_feature_graphic_playstore.png",
-      "description": "DEcoDLE is a daily puzzle / rhythm hybrid that combines Wordle-style deduction with a rhythm-gated guess loop. Before each guess attempt, players clear an Acoustic Cypher — a beat-matching round where they tap symbols on an eight-symbol keyboard in time with a generated rhythm track. The puzzle uses an eight-symbol alphabet and a five-symbol hidden sequence; players have up to six Puzzleboard rows per run. Acoustic Cypher Evolved (Evo mode) — a radial-dial alternate visual — ships in v1.1.0.",
+      "description": "DEcoDLE is a daily puzzle / rhythm hybrid that combines Wordle-style deduction with a rhythm-gated guess loop. Before each guess attempt, players clear an Acoustic Cypher — a beat-matching round where they tap symbols on an eight-symbol keyboard in time with a generated rhythm track. The puzzle uses an eight-symbol alphabet and a five-symbol hidden sequence; players have up to six Puzzleboard rows per run. Since v1.1.0 (June 12, 2026) the Cypher has two player-selectable styles: Classic (static center monitor) and Acoustic Cypher Evolved (Evo) — a radial Cypher Dial — with identical scoring and rewards in both.",
       "genre": ["Puzzle", "Word game", "Rhythm game", "Daily puzzle"],
       "applicationCategory": "GameApplication",
       "operatingSystem": ["iOS", "Android"],
+      "softwareVersion": "1.1.0",
       "datePublished": "2026-04-24",
       "publisher": { "@id": "https://adastravanguardstudios.com/#organization" },
       "gamePlatform": ["iOS", "Android"],
@@ -1515,12 +1571,24 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
       "@type": "Book",
       "@id": "https://decodle.app/#novella",
       "name": "DEcoDLE: The Journal Logs",
-      "bookFormat": "https://schema.org/EBook",
       "datePublished": "2026-06-12",
       "url": "https://www.amazon.com/dp/B0GX31SKMM/",
       "author": { "@type": "Organization", "name": "Ad Astra Vanguard Studios LLC" },
       "publisher": { "@id": "https://adastravanguardstudios.com/#organization" },
-      "description": "An epistolary novel set in the DEcoDLE universe — a six-week correspondence between two in-game AI characters, :/AI+> and :/System>."
+      "description": "An epistolary novel set in the DEcoDLE universe — a six-week correspondence between two in-game AI characters, :/AI+> and :/System>.",
+      "workExample": [
+        {
+          "@type": "Book",
+          "bookFormat": "https://schema.org/EBook",
+          "datePublished": "2026-06-12",
+          "url": "https://www.amazon.com/dp/B0GX31SKMM/"
+        },
+        {
+          "@type": "Book",
+          "bookFormat": "https://schema.org/Paperback",
+          "datePublished": "2026-06-12"
+        }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -1539,7 +1607,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
           "name": "How does the Acoustic Cypher work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Symbols flash on a static center monitor to a beat. The player taps the matching key on the eight-symbol keyboard as each one lights up. Completing the full sequence cleanly triggers Perfect Synchronization, which awards bonus Power-Ups deployable during later rounds; players have unlimited attempts to complete the Cypher, so a sloppy run still advances the puzzle (just without the bonuses). Acoustic Cypher Evolved (Evo, v1.1.0) replaces the static monitor with a rotating Cypher Dial. The mechanic is patent-pending under USPTO filings #64/037,214 (base Acoustic Cypher) and #64/061,463 (Classic + Evo coexistence model), both 2026."
+            "text": "In the Classic style, symbols flash on a static center monitor to a beat. The player taps the matching key on the eight-symbol keyboard as each one lights up. Completing the full sequence cleanly triggers Perfect Synchronization, which awards bonus Power-Ups deployable during later rounds; players have unlimited attempts to complete the Cypher, so a sloppy run still advances the puzzle (just without the bonuses). Acoustic Cypher Evolved (Evo, added in v1.1.0) replaces the static monitor with a rotating Cypher Dial — players switch between Classic and Evo anytime in Settings, with identical scoring and rewards. The mechanic is patent-pending under USPTO filings #64/037,214 (base Acoustic Cypher) and #64/061,463 (Classic + Evo coexistence model), both 2026."
           }
         },
         {
@@ -1734,6 +1802,60 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
       </div>
     </div>
   </div>
+
+  <!-- ═══ FEATURE: CHOOSE YOUR CYPHER STYLE (v1.1.0) ═══ -->
+  <div class="cypher-styles">
+    <h3 class="cypher-styles-head">Choose Your Cypher Style</h3>
+    <div class="cypher-compare">
+
+      <!-- EVO card -->
+      <article class="cypher-card">
+        <div class="cypher-visual">
+          <div class="cypher-shot">
+            <video autoplay loop muted playsinline preload="metadata" poster="decodle_evo_cypher_poster.jpg" aria-label="Acoustic Cypher Evolved gameplay — the pin sweeps the rotating Cypher Dial">
+              <source src="decodle_evo_cypher_loop.mp4" type="video/mp4">
+              <img src="decodle_evo_cypher_poster.jpg" alt="Acoustic Cypher Evolved — rotating Cypher Dial gameplay">
+            </video>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <div class="feature-tag">New in v1.1.0</div>
+          <h3 class="feature-title"><em>Acoustic Cypher</em><br>Evolved</h3>
+          <p class="feature-desc">A second way to read the Cypher. The static monitor becomes a rotating <strong style="color:var(--phosphor)">Cypher Dial</strong> — the target symbol sweeps a radial track, changing position as well as identity with every beat. Read the dial. Tap each notch's symbol as the pin reaches it.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Switch between Classic and Evo anytime — Settings → Cypher Style</div>
+            <div class="feature-bullet">Identical scoring and rewards in both styles</div>
+            <div class="feature-bullet">In-app walkthrough teaches the dial step by step</div>
+            <div class="feature-bullet">Take as many cycles as you need; one clean cycle earns Perfect Sync</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CLASSIC card -->
+      <article class="cypher-card">
+        <div class="cypher-visual">
+          <div class="cypher-shot">
+            <video autoplay loop muted playsinline preload="metadata" poster="decodle_classic_cypher_poster.jpg" aria-label="Acoustic Cypher Classic gameplay — symbols flash on the static center monitor">
+              <source src="decodle_classic_cypher_loop.mp4" type="video/mp4">
+              <img src="decodle_classic_cypher_poster.jpg" alt="Acoustic Cypher Classic — static center monitor and eight-symbol keyboard">
+            </video>
+          </div>
+        </div>
+        <div class="feature-copy">
+          <div class="feature-tag">The Original</div>
+          <h3 class="feature-title"><em>Acoustic Cypher</em><br>Classic</h3>
+          <p class="feature-desc">The original way to read the Cypher. Symbols flash on a fixed <strong style="color:var(--phosphor)">center monitor</strong> in time with the beat. Watch the monitor, tap each symbol on the keyboard as it lights up, and clear the sequence.</p>
+          <div class="feature-bullets">
+            <div class="feature-bullet">Static center monitor — read it, tap it, clear it</div>
+            <div class="feature-bullet">Identical scoring and rewards in both styles</div>
+            <div class="feature-bullet">The style DEcoDLE launched with — clean and direct</div>
+            <div class="feature-bullet">Take as many cycles as you need; one clean cycle earns Perfect Sync</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
 </section>
 
 <!-- ═══ REWARDS SECTION ═══ -->
@@ -1759,7 +1881,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
 
     <div class="reward-card">
       <div class="reward-card-img">
-        <img src="decodle_ios_09_rewards_1320x2868.png" alt="Perfect Sync reward selection screen">
+        <img src="decodle_rewards_v110_1290x2796.png" alt="Perfect Sync reward selection screen">
       </div>
       <div class="reward-card-body">
         <div class="reward-card-tag">Reward Select</div>
@@ -1776,7 +1898,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
   <div class="feature-row">
     <div class="feature-phones" style="justify-content:center;">
       <div class="feature-phone tall">
-        <img src="decodle_ios_02_difficulty_1320x2868.png" alt="Difficulty select screen — Casual, Hard, Expert">
+        <img src="decodle_select_v110_1290x2796.jpg" alt="Select screen — Classic/Evo style toggle and Casual, Hard, Expert tiers">
       </div>
     </div>
     <div class="feature-copy">
@@ -1806,7 +1928,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
         <div class="screenshot-caption">Tap to Begin</div>
       </div>
       <div class="screenshot-frame">
-        <img src="decodle_ios_02_difficulty_1320x2868.png" alt="Difficulty select">
+        <img src="decodle_select_v110_1290x2796.jpg" alt="Select screen — style toggle and difficulty tiers">
         <div class="screenshot-caption">Select Mode</div>
       </div>
       <div class="screenshot-frame">
@@ -1834,7 +1956,7 @@ footer .copy { font-size: 0.6rem; color: rgba(245,236,215,0.2); letter-spacing: 
         <div class="screenshot-caption">End Card</div>
       </div>
       <div class="screenshot-frame">
-        <img src="decodle_ios_09_rewards_1320x2868.png" alt="Perfect Sync rewards">
+        <img src="decodle_rewards_v110_1290x2796.png" alt="Perfect Sync rewards">
         <div class="screenshot-caption">Sync Rewards</div>
       </div>
       <div class="screenshot-frame">
