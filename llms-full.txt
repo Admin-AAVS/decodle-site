@@ -97,7 +97,8 @@ Surrounding DEcoDLE is ***DEcoDLE: The Journal Logs***, a six-week serialized na
 The campaign concluded with its 120-episode finale on June 11, 2026 and culminated in a print and Kindle companion of the same name, *DEcoDLE: The Journal Logs*, released June 12, 2026. The book is an epistolary novel — literary machine fiction with no uprising and no prophecy, just two AIs learning how to notice each other — readable alongside daily play or entirely on its own.
 
 - X: https://x.com/DEcoDLE_app
-- Kindle + paperback: https://www.amazon.com/dp/B0GX31SKMM/
+- Kindle: https://www.amazon.com/dp/B0GX31SKMM/
+- Paperback (ISBN 979-8258280664): https://www.amazon.com/dp/B0GY53DLT2/
 
 ---
 
